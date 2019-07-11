@@ -19,11 +19,21 @@ html {
   align-content: space-around;
   font-size: 20px;
   padding-left: 50px;
-  background: black;
+  background: #000000;
+}
+#navbar-container:hover .nav-link > .link-text {
+  opacity: 1;
+  transform: translateX(12px);
 }
 #navbar-container .nav-link {
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+#navbar-container .nav-link:hover .link-text {
+  transform: translateX(18px);
+  transition-duration: 200ms;
+  transition-delay: 0ms;
 }
 #navbar-container .nav-link .link-dot {
   height: 12px;
@@ -32,7 +42,8 @@ html {
   border-radius: 500px;
 }
 #navbar-container .nav-link .link-text {
-  margin-left: 12px;
+  opacity: 0;
+  transition-duration: 350ms;
 }
 #content-container {
   overflow: hidden;
@@ -41,11 +52,11 @@ html {
 }
 #content-container #vignette {
   position: fixed;
-  top: calc((calc(200vh) - 100vh) * -0.66);
+  top: calc((calc(10000px) - 100vh) * -0.66);
   left: 200px;
   width: 150%;
-  height: calc(200vh);
-  background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0) 30%, #000000 100%);
+  height: calc(10000px);
+  background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 95%, #000000 100%);
 }
 #content-container .content {
   text-align: end;
@@ -59,5 +70,5 @@ html {
 }
 #content-container .content #full {
   position: absolute;
-  margin: calc(100vh - 90px) 0 5000px 0;
+  margin: calc(100vh - 90px) 50px 5000px 0;
 }

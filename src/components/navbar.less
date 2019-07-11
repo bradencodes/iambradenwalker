@@ -6,11 +6,24 @@
   align-content: space-around;
   font-size: 20px;
   padding-left: 50px;
-  background: black;
+  background: darken(@secondary, 5%);
+
+  &:hover .nav-link > .link-text {
+    opacity: 1;
+    transform: translateX(12px);
+  }
 
   .nav-link {
     display: flex;
     align-items: center;
+    cursor: pointer;
+
+    &:hover .link-text {
+      transform: translateX(18px);
+
+      transition-duration: 200ms;
+      transition-delay: 0ms;
+    }
 
     .link-dot {
       height: 12px;
@@ -20,7 +33,9 @@
     }
 
     .link-text {
-      margin-left: 12px;
+      opacity: 0;
+
+      transition-duration: 350ms;
     }
   }
 }

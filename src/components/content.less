@@ -4,7 +4,7 @@
   margin-left: 200px;
 
   #vignette {
-    @vignette-height: calc(200vh);
+    @vignette-height: calc(10000px);
     position: fixed;
     top: calc((@vignette-height - 100vh) * -0.66);
     left: 200px;
@@ -12,7 +12,8 @@
     height: @vignette-height;
     background-image: radial-gradient(
       ellipse closest-side,
-      rgba(0, 0, 0, 0) 30%,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, .5) 95%,
       rgba(0, 0, 0, 1) 100%
     );
   }
@@ -30,7 +31,7 @@
 
     #full {
       position: absolute;
-      margin: calc(100vh - 90px) 0 5000px 0;
+      margin: calc(100vh - 90px) 50px 5000px 0;
     }
   }
 }
