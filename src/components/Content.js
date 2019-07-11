@@ -7,6 +7,7 @@ const Content = () => {
         <div id='iam'>I AM BRADEN WALKER</div>
         <div id='full'>A FULL STACK DEVELOPER</div>
       </div>
+
       <div id='vignette' />
     </div>
   );
