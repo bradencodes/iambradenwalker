@@ -1,0 +1,26 @@
+#content-container {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  #vignette-front {
+    position: absolute;
+    top: -25%;
+    left: 0px;
+    width: 150%;
+    height: 150%;
+    background-image: radial-gradient(
+      ellipse closest-side,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 1)
+    );
+  }
+
+  .content {
+    text-align: end;
+    font-size: 156px;
+  }
+}

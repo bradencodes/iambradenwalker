@@ -7,5 +7,48 @@ html {
 }
 .App {
   font-family: 'Muli', sans-serif;
-  font-size: 2rem;
+  color: #ffffff;
+  background: #1a1a1a;
+  display: grid;
+  grid-template-columns: 170px 1fr;
+}
+#navbar-container {
+  height: 100vh;
+  display: grid;
+  align-content: space-around;
+  font-size: 20px;
+  padding-left: 50px;
+  background: black;
+}
+#navbar-container .nav-link {
+  display: flex;
+  align-items: center;
+}
+#navbar-container .nav-link .link-dot {
+  height: 12px;
+  width: 12px;
+  border: 2px #ffffff solid;
+  border-radius: 500px;
+}
+#navbar-container .nav-link .link-text {
+  margin-left: 12px;
+}
+#content-container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#content-container #vignette-front {
+  position: absolute;
+  top: -25%;
+  left: 0px;
+  width: 150%;
+  height: 150%;
+  background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0), #000000);
+}
+#content-container .content {
+  text-align: end;
+  font-size: 156px;
 }
