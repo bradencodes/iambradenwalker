@@ -2,6 +2,9 @@
   box-sizing: border-box;
   outline: none;
 }
+body {
+  scroll-snap-type: y mandatory;
+}
 html {
   font-size: 62.5%;
 }
@@ -59,7 +62,6 @@ html {
   transition-duration: 350ms;
 }
 #content-container {
-  overflow: hidden;
   width: calc(100% - 200px);
   margin-left: 200px;
 }
@@ -73,16 +75,32 @@ html {
   pointer-events: none;
 }
 #content-container .content {
-  text-align: end;
+  text-align: right;
   font-size: 10vw;
   margin-right: 50px;
+  padding-left: 10vw;
   display: flex;
   flex-flow: column;
 }
 #content-container .content #iam {
-  margin-top: calc(100vh / 5);
+  position: fixed;
+  margin: calc(100vh / 5) 50px 0 0;
 }
-#content-container .content #full {
-  position: absolute;
-  margin: calc(100vh - 90px) 50px 5000px 0;
+#content-container .content .introText {
+  position: relative;
+  margin-top: calc(-4vw - (100vh / 5));
+  padding-top: calc(100vh / 5);
+  height: 100vh;
+  scroll-snap-align: start;
+}
+#content-container .content .first {
+  position: relative;
+  margin-top: calc(-4vw - (100vh / 5));
+  padding-top: calc(100vh / 5);
+  height: 100vh;
+  scroll-snap-align: start;
+  margin-top: 0;
+}
+#content-container .content .invisible {
+  visibility: hidden;
 }
