@@ -9,6 +9,7 @@ html {
   font-family: 'Muli', sans-serif;
   color: #ffffff;
   background: #080808;
+  height: 5000px;
 }
 #navbar-container {
   position: fixed;
@@ -48,7 +49,7 @@ html {
 }
 #content-container .content {
   text-align: end;
-  font-size: 156px;
+  font-size: 10vw;
   margin-right: 50px;
   display: flex;
   flex-flow: column;
@@ -57,5 +58,6 @@ html {
   margin-top: calc(100vh / 5);
 }
 #content-container .content #full {
-  margin: 403px 0 5000px 0;
+  position: absolute;
+  margin: calc(100vh - 90px) 0 5000px 0;
 }
