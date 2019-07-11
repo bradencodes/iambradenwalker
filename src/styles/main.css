@@ -8,12 +8,12 @@ html {
 .App {
   font-family: 'Muli', sans-serif;
   color: #ffffff;
-  background: #1a1a1a;
-  display: grid;
-  grid-template-columns: 170px 1fr;
+  background: #080808;
 }
 #navbar-container {
+  position: fixed;
   height: 100vh;
+  width: 200px;
   display: grid;
   align-content: space-around;
   font-size: 20px;
@@ -34,21 +34,28 @@ html {
   margin-left: 12px;
 }
 #content-container {
-  position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: calc(100% - 200px);
+  margin-left: 200px;
 }
-#content-container #vignette-front {
-  position: absolute;
-  top: -25%;
-  left: 0px;
+#content-container #vignette {
+  position: fixed;
+  top: calc((calc(200vh) - 100vh) * -0.66);
+  left: 200px;
   width: 150%;
-  height: 150%;
-  background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0), #000000);
+  height: calc(200vh);
+  background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0) 30%, #000000 100%);
 }
 #content-container .content {
   text-align: end;
   font-size: 156px;
+  margin-right: 50px;
+  display: flex;
+  flex-flow: column;
+}
+#content-container .content #iam {
+  margin-top: calc(100vh / 5);
+}
+#content-container .content #full {
+  margin: 403px 0 5000px 0;
 }
