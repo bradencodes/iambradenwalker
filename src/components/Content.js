@@ -22,43 +22,53 @@ const Content = () => {
     if (meInView) return ['I AM ', 'BRADEN WALKER'];
     else if (rollInView) return ['I AM A ', 'FULL STACK DEVELOPER'];
     else if (adjectiveInView) return ['I AM ', 'CREATIVE'];
-    else if (realInView) return ['I WILL ', 'MAKE YOU MONEY'];
-    else return ['', ''];
+    else return ['I WILL ', 'MAKE YOU MONEY'];
   };
 
   return (
     <div id='content-container'>
       <div className='content'>
         <div id='iam'>
-          {getPrefixText()[0]}
+          <span id='prefix'>{getPrefixText()[0]}</span>
           <span className='invisible'>{getPrefixText()[1]}</span>
         </div>
+
         <div className='first'>
           <span className='invisible' ref={meRef}>
-            I AM{' '}
+            I
           </span>
-          BRADEN WALKER
+          <span className='invisible'> AM</span>
+          <span> BRADEN</span>
+          <span> WALKER</span>
         </div>
 
         <div className='introText'>
           <span className='invisible' ref={rollRef}>
-            I AM A{' '}
+            I
           </span>
-          FULL STACK DEVELOPER
+          <span className='invisible'> AM</span>
+          <span className='invisible'> A</span>
+          <span> FULL</span>
+          <span> STACK</span>
+          <span> DEVELOPER</span>
         </div>
 
         <div className='introText'>
           <span className='invisible' ref={adjectiveRef}>
-            I AM{' '}
+            I
           </span>
-          CREATIVE
+          <span className='invisible'> AM</span>
+          <span> CREATIVE</span>
         </div>
 
         <div className='introText'>
           <span className='invisible' ref={realRef}>
-            I WILL{' '}
+            I
           </span>
-          MAKE YOU MONEY
+          <span className='invisible'> WILL</span>
+          <span> MAKE</span>
+          <span> YOU</span>
+          <span> MONEY</span>
         </div>
       </div>
 
