@@ -92,6 +92,7 @@ html {
   padding-top: calc(100vh / 5);
   height: 100vh;
   scroll-snap-align: start;
+  transition-duration: 400ms;
 }
 #content-container .content .first {
   position: relative;
@@ -100,6 +101,7 @@ html {
   height: 100vh;
   scroll-snap-align: start;
   margin-top: 0;
+  transition-duration: 400ms;
 }
 #content-container .content .invisible {
   visibility: hidden;
