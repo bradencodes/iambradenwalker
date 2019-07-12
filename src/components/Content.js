@@ -73,7 +73,7 @@ const Content = () => {
           </div>
         </div>
 
-        <div className='intro-text'>
+        <div className='intro-text snap'>
           <div className='intro-text-container'>
             <span className='invisible' ref={roleRef}>
               I
@@ -86,7 +86,7 @@ const Content = () => {
           </div>
         </div>
 
-        <div className='intro-text'>
+        <div className='intro-text snap'>
           <div className='intro-text-container'>
             <span className='invisible' ref={adjectiveRef}>
               I
@@ -96,7 +96,7 @@ const Content = () => {
           </div>
         </div>
 
-        <div className='intro-text'>
+        <div className='intro-text snap'>
           <div className='intro-text-container'>
             <span className='invisible' ref={realRef}>
               I

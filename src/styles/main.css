@@ -89,7 +89,6 @@ html {
   margin-top: calc(-1.3vw - (100vh / 5));
   padding-top: calc(100vh / 5);
   height: 100vh;
-  scroll-snap-align: start;
 }
 #content-container .content .intro-text .intro-text-container {
   display: flex;
@@ -100,7 +99,6 @@ html {
   margin-top: calc(-1.3vw - (100vh / 5));
   padding-top: calc(100vh / 5);
   height: 100vh;
-  scroll-snap-align: start;
   margin-top: 0;
 }
 #content-container .content .first .intro-text-container {
@@ -112,7 +110,6 @@ html {
   margin-top: calc(-1.3vw - (100vh / 5));
   padding-top: calc(100vh / 5);
   height: 100vh;
-  scroll-snap-align: start;
   position: fixed;
   margin: 0 50px 0 0;
   scroll-snap-align: none;
@@ -124,4 +121,7 @@ html {
 }
 #content-container .content .invisible {
   visibility: hidden;
+}
+#content-container .content .snap {
+  scroll-snap-align: start;
 }
