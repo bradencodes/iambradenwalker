@@ -29,9 +29,9 @@ const Content = () => {
     else prefix = ['I', 'WILL'];
 
     return prefix.map((word, i) => (
-      <Fragment>
+      <Fragment key={i}>
         <Flipped flipId={word}>
-          <span key={i}>{word}</span>
+          <span>{word}</span>
         </Flipped>
       </Fragment>
     ));
@@ -39,10 +39,10 @@ const Content = () => {
 
   const getInvisibleText = () => {
     let invs = [];
-    if (meInView) invs = ['BRADEN', 'WALKER'];
-    else if (roleInView) invs = ['FULL', 'STACK', 'DEVELOPER'];
-    else if (adjectiveInView) invs = ['CREATIVE'];
-    else invs = ['MAKE', 'YOU', 'MONEY'];
+    if (meInView) invs = ['BRADEN', 'WALKER.'];
+    else if (roleInView) invs = ['FULL', 'STACK', 'DEVELOPER.'];
+    else if (adjectiveInView) invs = ['CREATIVE.'];
+    else invs = ['MAKE', 'YOU', 'MONEY.'];
 
     return invs.map((word, i) => (
       <span className='invisible' key={i}>
@@ -55,42 +55,57 @@ const Content = () => {
     <div id='content-container'>
       <div className='content'>
         <Flipper className={'iam'} flipKey={allInView}>
-          {getPrefixText()}
+          <div className='intro-text-container'>
+            {getPrefixText()}
 
-          {getInvisibleText()}
+            {getInvisibleText()}
+          </div>
         </Flipper>
 
         <div className='first'>
-          <span className='invisible' ref={meRef}>
-            I AM
-          </span>
-          <span>BRADEN</span>
-          <span>WALKER</span>
+          <div className='intro-text-container'>
+            <span className='invisible' ref={meRef}>
+              I
+            </span>
+            <span className='invisible'>AM</span>
+            <span>BRADEN</span>
+            <span>WALKER.</span>
+          </div>
         </div>
 
         <div className='intro-text'>
-          <span className='invisible' ref={roleRef}>
-            I AM A
-          </span>
-          <span>FULL</span>
-          <span>STACK</span>
-          <span>DEVELOPER</span>
+          <div className='intro-text-container'>
+            <span className='invisible' ref={roleRef}>
+              I
+            </span>
+            <span className='invisible'>AM</span>
+            <span className='invisible'>A</span>
+            <span>FULL</span>
+            <span>STACK</span>
+            <span>DEVELOPER.</span>
+          </div>
         </div>
 
         <div className='intro-text'>
-          <span className='invisible' ref={adjectiveRef}>
-            I AM
-          </span>
-          <span>CREATIVE</span>
+          <div className='intro-text-container'>
+            <span className='invisible' ref={adjectiveRef}>
+              I
+            </span>
+            <span className='invisible'>AM</span>
+            <span>CREATIVE.</span>
+          </div>
         </div>
 
         <div className='intro-text'>
-          <span className='invisible' ref={realRef}>
-            I WILL
-          </span>
-          <span>MAKE</span>
-          <span>YOU</span>
-          <span>MONEY</span>
+          <div className='intro-text-container'>
+            <span className='invisible' ref={realRef}>
+              I
+            </span>
+            <span className='invisible'>WILL</span>
+            <span>MAKE</span>
+            <span>YOU</span>
+            <span>MONEY.</span>
+          </div>
         </div>
       </div>
 

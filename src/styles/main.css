@@ -80,50 +80,47 @@ html {
   padding-left: 10vw;
   display: flex;
   flex-flow: column;
+  margin-right: 50px;
 }
 #content-container .content span {
-  height: 100px;
-  margin-left: 30px;
+  margin: -50px 0 0 30px;
 }
-#content-container .content .introText {
-  margin-top: calc(-4vw - (100vh / 5));
+#content-container .content .intro-text {
+  margin-top: calc(-1.3vw - (100vh / 5));
   padding-top: calc(100vh / 5);
   height: 100vh;
   scroll-snap-align: start;
-  margin-right: 50px;
+}
+#content-container .content .intro-text .intro-text-container {
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: flex-end;
-  line-height: 0;
 }
 #content-container .content .first {
-  margin-top: calc(-4vw - (100vh / 5));
+  margin-top: calc(-1.3vw - (100vh / 5));
   padding-top: calc(100vh / 5);
   height: 100vh;
   scroll-snap-align: start;
-  margin-right: 50px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-end;
-  line-height: 0;
   margin-top: 0;
 }
+#content-container .content .first .intro-text-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
 #content-container .content .iam {
-  margin-top: calc(-4vw - (100vh / 5));
+  margin-top: calc(-1.3vw - (100vh / 5));
   padding-top: calc(100vh / 5);
   height: 100vh;
   scroll-snap-align: start;
-  margin-right: 50px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-end;
-  line-height: 0;
   position: fixed;
   margin: 0 50px 0 0;
   scroll-snap-align: none;
 }
-#content-container .content .iam .prefix-container {
-  transition-duration: 400ms;
+#content-container .content .iam .intro-text-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 #content-container .content .invisible {
   visibility: hidden;
