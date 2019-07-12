@@ -62,8 +62,8 @@ html {
   transition-duration: 350ms;
 }
 #content-container {
-  width: calc(100% - 200px);
-  margin-left: 200px;
+  width: 100%;
+  padding: 0 50px 0 400px;
 }
 #content-container #vignette {
   position: fixed;
@@ -75,18 +75,15 @@ html {
   pointer-events: none;
 }
 #content-container .content {
-  text-align: right;
   font-size: 10vw;
-  padding-left: 10vw;
   display: flex;
   flex-flow: column;
-  margin-right: 50px;
 }
 #content-container .content span {
-  margin: -50px 0 0 30px;
+  white-space: pre;
 }
 #content-container .content .intro-text {
-  margin-top: calc(-1.3vw - (100vh / 5));
+  margin-top: calc(-4.3vw - (100vh / 5));
   padding-top: calc(100vh / 5);
   height: 100vh;
 }
@@ -96,7 +93,7 @@ html {
   justify-content: flex-end;
 }
 #content-container .content .first {
-  margin-top: calc(-1.3vw - (100vh / 5));
+  margin-top: calc(-4.3vw - (100vh / 5));
   padding-top: calc(100vh / 5);
   height: 100vh;
   margin-top: 0;
@@ -107,12 +104,15 @@ html {
   justify-content: flex-end;
 }
 #content-container .content .iam {
-  margin-top: calc(-1.3vw - (100vh / 5));
+  margin-top: calc(-4.3vw - (100vh / 5));
   padding-top: calc(100vh / 5);
   height: 100vh;
+  width: 100%;
+  padding: calc(100vh / 5) 50px 0 400px;
   position: fixed;
-  margin: 0 50px 0 0;
-  scroll-snap-align: none;
+  top: 0;
+  right: 0;
+  margin: 0;
 }
 #content-container .content .iam .intro-text-container {
   display: flex;

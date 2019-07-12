@@ -23,10 +23,10 @@ const Content = () => {
 
   const getPrefixText = () => {
     let prefix = [];
-    if (meInView) prefix = ['I', 'AM'];
-    else if (roleInView) prefix = ['I', 'AM', 'A'];
-    else if (adjectiveInView) prefix = ['I', 'AM'];
-    else prefix = ['I', 'WILL'];
+    if (meInView) prefix = ['I', ' AM'];
+    else if (roleInView) prefix = ['I', ' AM', ' A'];
+    else if (adjectiveInView) prefix = ['I', ' AM'];
+    else prefix = ['I', ' WILL'];
 
     return prefix.map((word, i) => (
       <Fragment key={i}>
@@ -39,10 +39,10 @@ const Content = () => {
 
   const getInvisibleText = () => {
     let invs = [];
-    if (meInView) invs = ['BRADEN', 'WALKER.'];
-    else if (roleInView) invs = ['FULL', 'STACK', 'DEVELOPER.'];
-    else if (adjectiveInView) invs = ['CREATIVE.'];
-    else invs = ['MAKE', 'YOU', 'MONEY.'];
+    if (meInView) invs = [' BRADEN', ' WALKER.'];
+    else if (roleInView) invs = [' FULL', ' STACK', ' DEVELOPER.'];
+    else if (adjectiveInView) invs = [' CREATIVE.'];
+    else invs = [' MAKE', ' YOU', ' MONEY.'];
 
     return invs.map((word, i) => (
       <span className='invisible' key={i}>
@@ -67,9 +67,9 @@ const Content = () => {
             <span className='invisible' ref={meRef}>
               I
             </span>
-            <span className='invisible'>AM</span>
-            <span>BRADEN</span>
-            <span>WALKER.</span>
+            <span className='invisible'> AM</span>
+            <span> BRADEN</span>
+            <span> WALKER.</span>
           </div>
         </div>
 
@@ -78,11 +78,11 @@ const Content = () => {
             <span className='invisible' ref={roleRef}>
               I
             </span>
-            <span className='invisible'>AM</span>
-            <span className='invisible'>A</span>
-            <span>FULL</span>
-            <span>STACK</span>
-            <span>DEVELOPER.</span>
+            <span className='invisible'> AM</span>
+            <span className='invisible'> A</span>
+            <span> FULL</span>
+            <span> STACK</span>
+            <span> DEVELOPER.</span>
           </div>
         </div>
 
@@ -91,8 +91,8 @@ const Content = () => {
             <span className='invisible' ref={adjectiveRef}>
               I
             </span>
-            <span className='invisible'>AM</span>
-            <span>CREATIVE.</span>
+            <span className='invisible'> AM</span>
+            <span> CREATIVE.</span>
           </div>
         </div>
 
@@ -101,10 +101,10 @@ const Content = () => {
             <span className='invisible' ref={realRef}>
               I
             </span>
-            <span className='invisible'>WILL</span>
-            <span>MAKE</span>
-            <span>YOU</span>
-            <span>MONEY.</span>
+            <span className='invisible'> WILL</span>
+            <span> MAKE</span>
+            <span> YOU</span>
+            <span> MONEY.</span>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 #content-container {
-  width: calc(100% - 200px);
-  margin-left: 200px;
+  width: 100%;
+  padding: 0 50px 0 400px;
 
   #vignette {
     @vignette-height: 150%;
@@ -18,19 +18,16 @@
   }
 
   .content {
-    text-align: right;
     font-size: 10vw;
-    padding-left: 10vw;
     display: flex;
     flex-flow: column;
-    margin-right: 50px;
 
     span {
-      margin: -50px 0 0 30px;
+      white-space: pre;
     }
 
     .intro-text {
-      margin-top: calc(-1.3vw - (100vh / 5));
+      margin-top: calc(-4.3vw - (100vh / 5));
       padding-top: calc(100vh / 5);
       height: 100vh;
 
@@ -49,9 +46,14 @@
     .iam {
       .intro-text;
 
+      width: 100%;
+      padding: calc(100vh / 5) 50px 0 400px;
+
       position: fixed;
-      margin: 0 50px 0 0;
-      scroll-snap-align: none;
+      top: 0;
+      right: 0;
+
+      margin: 0;
     }
 
     .invisible {
