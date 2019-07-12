@@ -24,21 +24,14 @@
     display: flex;
     flex-flow: column;
 
-    span {
-      height: 100px;
-      margin-left: 30px;
-    }
-
-    .intro-text {
+    .introText {
       margin-top: calc(-4vw - (100vh / 5));
       padding-top: calc(100vh / 5);
       height: 100vh;
-      width: 100%;
       scroll-snap-align: start;
       margin-right: 50px;
 
       display: flex;
-      width: 100%;
       flex-flow: row wrap;
       justify-content: flex-end;
     }
@@ -53,6 +46,10 @@
       position: fixed;
       margin: 0 50px 0 0;
       scroll-snap-align: none;
+
+      .prefix-container {
+        transition-duration: 400ms;
+      }
     }
 
     .invisible {

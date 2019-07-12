@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 
@@ -20,29 +20,24 @@ const Content = () => {
   });
 
   let allInView = +`${+meInView}${+roleInView}${+adjectiveInView}${+realInView}`;
+  console.log(allInView);
 
   const getPrefixText = () => {
-    let prefix = [];
-    if (meInView) prefix = ['I', 'AM'];
-    else if (roleInView) prefix = ['I', 'AM', 'A'];
-    else if (adjectiveInView) prefix = ['I', 'AM'];
-    else prefix = ['I', 'WILL'];
+    let prefix = '';
+    if (meInView) prefix = 'I AM ';
+    else if (roleInView) prefix = 'I AM A ';
+    else if (adjectiveInView) prefix = 'I AM ';
+    else prefix = 'I WILL ';
 
-    return prefix.map((word, i) => (
-      <Fragment>
-        <Flipped flipId={word}>
-          <span key={i}>{word}</span>
-        </Flipped>
-      </Fragment>
-    ));
+    return prefix;
   };
 
   const getInvisibleText = () => {
     let invs = [];
-    if (meInView) invs = ['BRADEN', 'WALKER'];
-    else if (roleInView) invs = ['FULL', 'STACK', 'DEVELOPER'];
-    else if (adjectiveInView) invs = ['CREATIVE'];
-    else invs = ['MAKE', 'YOU', 'MONEY'];
+    if (meInView) invs = [' BRADEN', ' WALKER'];
+    else if (roleInView) invs = [' FULL', ' STACK', ' DEVELOPER'];
+    else if (adjectiveInView) invs = [' CREATIVE'];
+    else invs = [' MAKE', ' YOU', ' MONEY'];
 
     return invs.map((word, i) => (
       <span className='invisible' key={i}>
@@ -54,44 +49,44 @@ const Content = () => {
   return (
     <div id='content-container'>
       <div className='content'>
-        <Flipper className={'iam'} flipKey={allInView}>
-          {getPrefixText()}
-
-          {getInvisibleText()}
-        </Flipper>
-
         <div className='first'>
           <span className='invisible' ref={meRef}>
             I AM
           </span>
-          <span>BRADEN</span>
-          <span>WALKER</span>
+          <span> BRADEN</span>
+          <span> WALKER</span>
         </div>
 
-        <div className='intro-text'>
+        <div className='introText'>
           <span className='invisible' ref={roleRef}>
             I AM A
           </span>
-          <span>FULL</span>
-          <span>STACK</span>
-          <span>DEVELOPER</span>
+          <span> FULL</span>
+          <span> STACK</span>
+          <span> DEVELOPER</span>
         </div>
 
-        <div className='intro-text'>
-          <span className='invisible' ref={adjectiveRef}>
-            I AM
-          </span>
-          <span>CREATIVE</span>
+        <div className='introText'>
+          <span ref={adjectiveRef}>I AM</span>
+          <span> CREATIVE</span>
         </div>
 
-        <div className='intro-text'>
+        <div className='introText'>
           <span className='invisible' ref={realRef}>
             I WILL
           </span>
-          <span>MAKE</span>
-          <span>YOU</span>
-          <span>MONEY</span>
+          <span> MAKE</span>
+          <span> YOU</span>
+          <span> MONEY</span>
         </div>
+
+        <Flipper className={'iam'} flipKey={allInView}>
+          <Flipped flipId='prefix'>
+            <span id='prefix-container'>{getPrefixText()}</span>
+          </Flipped>
+
+          {getInvisibleText()}
+        </Flipper>
       </div>
 
       <div id='vignette' />

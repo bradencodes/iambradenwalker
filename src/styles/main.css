@@ -77,27 +77,53 @@ html {
 #content-container .content {
   text-align: right;
   font-size: 10vw;
-  margin-right: 50px;
   padding-left: 10vw;
+  display: flex;
+  flex-flow: column;
 }
-#content-container .content #iam {
-  position: fixed;
-  margin: calc(100vh / 5) 50px 0 0;
+#content-container .content span {
+  height: 100px;
+  margin-left: 30px;
 }
 #content-container .content .introText {
-  position: relative;
   margin-top: calc(-4vw - (100vh / 5));
   padding-top: calc(100vh / 5);
   height: 100vh;
   scroll-snap-align: start;
+  margin-right: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  line-height: 0;
 }
 #content-container .content .first {
-  position: relative;
   margin-top: calc(-4vw - (100vh / 5));
   padding-top: calc(100vh / 5);
   height: 100vh;
   scroll-snap-align: start;
+  margin-right: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  line-height: 0;
   margin-top: 0;
+}
+#content-container .content .iam {
+  margin-top: calc(-4vw - (100vh / 5));
+  padding-top: calc(100vh / 5);
+  height: 100vh;
+  scroll-snap-align: start;
+  margin-right: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  line-height: 0;
+  position: fixed;
+  margin: 0 50px 0 0;
+  scroll-snap-align: none;
+}
+#content-container .content .iam .prefix-container {
+  transition-duration: 400ms;
 }
 #content-container .content .invisible {
   visibility: hidden;
