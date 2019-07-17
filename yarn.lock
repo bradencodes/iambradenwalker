@@ -8526,6 +8526,11 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
+scroll-snap@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/scroll-snap/-/scroll-snap-2.0.4.tgz#0387d78a1edb95792de5d5dcd8386d1f87153f77"
+  integrity sha512-7EkOVqfiSK3bb6aZUlalWjoU+FT3muP+VZx0R04Et7cW0NYnAC8aN3PqwP6lf3OF6csly7zHbZ3jcmg67dcWBg==
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"

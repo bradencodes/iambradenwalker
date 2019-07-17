@@ -3,7 +3,7 @@
   outline: none;
 }
 body {
-  scroll-snap-type: y mandatory;
+  overflow: hidden;
 }
 html {
   font-size: 62.5%;
@@ -61,11 +61,64 @@ html {
   opacity: 0;
   transition-duration: 350ms;
 }
-#content-container {
+.content {
+  font-size: 10vw;
+  display: flex;
+  flex-flow: column;
   width: 100%;
   padding: 0 50px 0 400px;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 }
-#content-container #vignette {
+.content span {
+  white-space: pre;
+}
+.content .intro-text {
+  margin-top: calc(-4.3vw - (100vh / 5));
+  padding-top: calc(100vh / 5);
+  min-height: 100vh;
+}
+.content .intro-text .intro-text-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.content .first {
+  margin-top: calc(-4.3vw - (100vh / 5));
+  padding-top: calc(100vh / 5);
+  min-height: 100vh;
+  margin-top: 0;
+}
+.content .first .intro-text-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.content .iam {
+  margin-top: calc(-4.3vw - (100vh / 5));
+  padding-top: calc(100vh / 5);
+  min-height: 100vh;
+  width: 100%;
+  padding: calc(100vh / 5) 50px 0 400px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 0;
+  pointer-events: none;
+}
+.content .iam .intro-text-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.content .invisible {
+  visibility: hidden;
+}
+.content .snap {
+  scroll-snap-align: start;
+}
+#vignette {
   position: fixed;
   top: calc((150% - 100vh) * -0.66);
   left: 0;
@@ -73,55 +126,4 @@ html {
   height: 150%;
   background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
   pointer-events: none;
-}
-#content-container .content {
-  font-size: 10vw;
-  display: flex;
-  flex-flow: column;
-}
-#content-container .content span {
-  white-space: pre;
-}
-#content-container .content .intro-text {
-  margin-top: calc(-4.3vw - (100vh / 5));
-  padding-top: calc(100vh / 5);
-  height: 100vh;
-}
-#content-container .content .intro-text .intro-text-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-#content-container .content .first {
-  margin-top: calc(-4.3vw - (100vh / 5));
-  padding-top: calc(100vh / 5);
-  height: 100vh;
-  margin-top: 0;
-}
-#content-container .content .first .intro-text-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-#content-container .content .iam {
-  margin-top: calc(-4.3vw - (100vh / 5));
-  padding-top: calc(100vh / 5);
-  height: 100vh;
-  width: 100%;
-  padding: calc(100vh / 5) 50px 0 400px;
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin: 0;
-}
-#content-container .content .iam .intro-text-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-#content-container .content .invisible {
-  visibility: hidden;
-}
-#content-container .content .snap {
-  scroll-snap-align: start;
 }

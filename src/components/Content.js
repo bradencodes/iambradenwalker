@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 
 const Content = () => {
+  //Intersection observers
   const [meRef, meInView] = useInView({
     threshhold: 0.2
   });
@@ -52,9 +53,9 @@ const Content = () => {
   };
 
   return (
-    <div id='content-container'>
+    <Fragment>
       <div className='content'>
-        <Flipper className={'iam'} flipKey={allInView}>
+        <Flipper className={'iam'} flipKey={allInView} spring={'wobbly'}>
           <div className='intro-text-container'>
             {getPrefixText()}
 
@@ -62,7 +63,7 @@ const Content = () => {
           </div>
         </Flipper>
 
-        <div className='first'>
+        <div className='first snap'>
           <div className='intro-text-container'>
             <span className='invisible' ref={meRef}>
               I
@@ -110,7 +111,7 @@ const Content = () => {
       </div>
 
       <div id='vignette' />
-    </div>
+    </Fragment>
   );
 };
 

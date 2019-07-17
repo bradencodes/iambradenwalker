@@ -1,67 +1,70 @@
-#content-container {
+.content {
+  font-size: 10vw;
+  display: flex;
+  flex-flow: column;
+
   width: 100%;
   padding: 0 50px 0 400px;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 
-  #vignette {
-    @vignette-height: 150%;
+  span {
+    white-space: pre;
+  }
+
+  .intro-text {
+    margin-top: calc(-4.3vw - (100vh / 5));
+    padding-top: calc(100vh / 5);
+    min-height: 100vh;
+
+    .intro-text-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+  }
+
+  .first {
+    .intro-text;
+    margin-top: 0;
+  }
+
+  .iam {
+    .intro-text;
+
+    width: 100%;
+    padding: calc(100vh / 5) 50px 0 400px;
+
     position: fixed;
-    top: calc((@vignette-height - 100vh) * -0.66);
-    left: 0;
-    width: 150%;
-    height: @vignette-height;
-    background-image: radial-gradient(
-      ellipse closest-side,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
+    top: 0;
+    right: 0;
+
+    margin: 0;
+
     pointer-events: none;
   }
 
-  .content {
-    font-size: 10vw;
-    display: flex;
-    flex-flow: column;
-
-    span {
-      white-space: pre;
-    }
-
-    .intro-text {
-      margin-top: calc(-4.3vw - (100vh / 5));
-      padding-top: calc(100vh / 5);
-      height: 100vh;
-
-      .intro-text-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-      }
-    }
-
-    .first {
-      .intro-text;
-      margin-top: 0;
-    }
-
-    .iam {
-      .intro-text;
-
-      width: 100%;
-      padding: calc(100vh / 5) 50px 0 400px;
-
-      position: fixed;
-      top: 0;
-      right: 0;
-
-      margin: 0;
-    }
-
-    .invisible {
-      visibility: hidden;
-    }
-
-    .snap {
-      scroll-snap-align: start;
-    }
+  .invisible {
+    visibility: hidden;
   }
+
+  .snap {
+    scroll-snap-align: start;
+  }
+}
+
+#vignette {
+  @vignette-height: 150%;
+  position: fixed;
+  top: calc((@vignette-height - 100vh) * -0.66);
+  left: 0;
+  width: 150%;
+  height: @vignette-height;
+  background-image: radial-gradient(
+    ellipse closest-side,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  pointer-events: none;
 }

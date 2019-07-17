@@ -7,7 +7,8 @@
     "react-dom": "^16.8.6",
     "react-flip-toolkit": "^6.6.9",
     "react-intersection-observer": "^8.23.0",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "scroll-snap": "^2.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
