@@ -7,19 +7,19 @@ import Intro from './content/Intro';
 const Content = () => {
   //Intersection observers
   const [meRef, meInView] = useInView({
-    threshhold: 0.2
+    threshhold: 1
   });
 
   const [roleRef, roleInView] = useInView({
-    threshhold: 0.2
+    threshhold: 1
   });
 
   const [adjectiveRef, adjectiveInView] = useInView({
-    threshhold: 0.2
+    threshhold: 1
   });
 
   const [realRef, realInView] = useInView({
-    threshhold: 0.2
+    threshhold: 1
   });
 
   let allInView = +`${+meInView}${+roleInView}${+adjectiveInView}${+realInView}`;
