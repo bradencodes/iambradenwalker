@@ -1,6 +1,13 @@
 .App {
   font-family: @primary-font;
   color: @primary;
-  background: @secondary;
-  height: 5000px;
+
+  .background {
+    background: @secondary;
+    z-index: -1000;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
 }

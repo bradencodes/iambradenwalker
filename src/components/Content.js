@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { Fragment } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 
