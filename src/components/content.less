@@ -8,54 +8,6 @@
   height: 100vh;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
-
-  span {
-    white-space: pre;
-  }
-
-  .intro-text {
-    margin-top: calc(-4.3vw - (100vh / 5));
-    padding-top: calc(100vh / 5);
-    min-height: 100vh;
-
-    .intro-text-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-  }
-
-  .first {
-    .intro-text;
-    margin-top: 0;
-  }
-
-  .iam {
-    .intro-text;
-
-    width: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: calc(100vh / 5) 50px 0 400px;
-
-    position: fixed;
-    top: 0;
-    right: 0;
-
-    margin: 0;
-
-    pointer-events: none;
-
-    z-index: -1;
-  }
-
-  .invisible {
-    visibility: hidden;
-  }
-
-  .snap {
-    scroll-snap-align: start;
-  }
 }
 
 #vignette {

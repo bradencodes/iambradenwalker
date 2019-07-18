@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 
+import Intro from './content/Intro';
+
 const Content = () => {
   //Intersection observers
   const [meRef, meInView] = useInView({
@@ -27,7 +29,8 @@ const Content = () => {
     if (meInView) prefix = ['I', ' AM'];
     else if (roleInView) prefix = ['I', ' AM', ' A'];
     else if (adjectiveInView) prefix = ['I', ' AM'];
-    else prefix = ['I', ' WILL'];
+    else if (realInView) prefix = ['I', ' WILL'];
+    else prefix = [];
 
     return prefix.map((word, i) => (
       <Fragment key={i}>
@@ -63,51 +66,7 @@ const Content = () => {
           </div>
         </Flipper>
 
-        <div className='first snap'>
-          <div className='intro-text-container'>
-            <span className='invisible' ref={meRef}>
-              I
-            </span>
-            <span className='invisible'> AM</span>
-            <span> BRADEN</span>
-            <span> WALKER.</span>
-          </div>
-        </div>
-
-        <div className='intro-text snap'>
-          <div className='intro-text-container'>
-            <span className='invisible' ref={roleRef}>
-              I
-            </span>
-            <span className='invisible'> AM</span>
-            <span className='invisible'> A</span>
-            <span> FULL</span>
-            <span> STACK</span>
-            <span> DEVELOPER.</span>
-          </div>
-        </div>
-
-        <div className='intro-text snap'>
-          <div className='intro-text-container'>
-            <span className='invisible' ref={adjectiveRef}>
-              I
-            </span>
-            <span className='invisible'> AM</span>
-            <span> CREATIVE.</span>
-          </div>
-        </div>
-
-        <div className='intro-text snap'>
-          <div className='intro-text-container'>
-            <span className='invisible' ref={realRef}>
-              I
-            </span>
-            <span className='invisible'> WILL</span>
-            <span> MAKE</span>
-            <span> YOU</span>
-            <span> MONEY.</span>
-          </div>
-        </div>
+        <Intro meRef={meRef} roleRef={roleRef} adjectiveRef={adjectiveRef} realRef={realRef} />
       </div>
 
       <div id='vignette' />

@@ -77,6 +77,15 @@ html {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
 }
+#vignette {
+  position: fixed;
+  top: calc((150% - 100vh) * -0.66);
+  left: 0;
+  width: 150%;
+  height: 150%;
+  background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
+  pointer-events: none;
+}
 .content span {
   white-space: pre;
 }
@@ -126,13 +135,4 @@ html {
 }
 .content .snap {
   scroll-snap-align: start;
-}
-#vignette {
-  position: fixed;
-  top: calc((150% - 100vh) * -0.66);
-  left: 0;
-  width: 150%;
-  height: 150%;
-  background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
-  pointer-events: none;
 }
