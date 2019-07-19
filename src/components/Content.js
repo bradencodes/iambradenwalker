@@ -39,7 +39,11 @@ const Content = () => {
     threshhold: 1
   });
 
-  let allInView = +`${+meInView}${+roleInView}${+adjectiveInView}${+realInView}`;
+  const [projectsRef, projectsInView] = useInView({
+    threshhold: 1
+  });
+
+  let allInView = +`${+meInView}${+roleInView}${+adjectiveInView}${+realInView}${+projectsInView}`;
 
   const getPrefixText = () => {
     let prefix = [];
@@ -47,6 +51,7 @@ const Content = () => {
     else if (roleInView) prefix = ['I', ' AM', ' A'];
     else if (adjectiveInView) prefix = ['I', ' AM'];
     else if (realInView) prefix = ['I', ' WILL'];
+    else if (projectsInView) prefix = ['I', ' HAVE'];
     else prefix = [];
 
     return prefix.map((word, i) => (
@@ -63,7 +68,9 @@ const Content = () => {
     if (meInView) invs = [' BRADEN', ' WALKER.'];
     else if (roleInView) invs = [' FULL', ' STACK', ' DEVELOPER.'];
     else if (adjectiveInView) invs = [' CREATIVE.'];
-    else invs = [' MAKE', ' YOU', ' MONEY.'];
+    else if (realInView) invs = [' MAKE', ' YOU', ' MONEY.'];
+    else if (projectsInView) invs = [' PROJECTS.'];
+    else invs = [];
 
     return invs.map((word, i) => (
       <span className='invisible' key={i}>
@@ -90,7 +97,7 @@ const Content = () => {
           realRef={realRef}
         />
 
-        <Projects />
+        <Projects projectsRef={projectsRef}/>
       </div>
 
       <div id='vignette' />
