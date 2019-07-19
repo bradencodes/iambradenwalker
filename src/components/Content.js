@@ -1,10 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Flipper, Flipped } from 'react-flip-toolkit';
+import ScrollSnap from 'scroll-snap';
 
 import Intro from './content/Intro';
+import Projects from './content/Projects';
+
+const snapConfig = {
+  scrollSnapDestination: '0% 73%',
+  scrollTimeout: 100,
+  scrollTime: 300
+};
 
 const Content = () => {
+  // Snapping
+  let container = useRef();
+
+  useEffect(() => {
+    const element = container.current;
+    const snapObject = new ScrollSnap(element, snapConfig);
+    snapObject.bind();
+  });
+
   //Intersection observers
   const [meRef, meInView] = useInView({
     threshhold: 1
@@ -57,7 +74,7 @@ const Content = () => {
 
   return (
     <Fragment>
-      <div className='content'>
+      <div className='content' ref={container}>
         <Flipper className={'iam'} flipKey={allInView} spring={'wobbly'}>
           <div className='intro-text-container'>
             {getPrefixText()}
@@ -66,7 +83,14 @@ const Content = () => {
           </div>
         </Flipper>
 
-        <Intro meRef={meRef} roleRef={roleRef} adjectiveRef={adjectiveRef} realRef={realRef} />
+        <Intro
+          meRef={meRef}
+          roleRef={roleRef}
+          adjectiveRef={adjectiveRef}
+          realRef={realRef}
+        />
+
+        <Projects />
       </div>
 
       <div id='vignette' />
