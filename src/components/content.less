@@ -8,6 +8,10 @@
   height: 100vh;
   // scroll-snap-type: y mandatory;
   overflow-y: scroll;
+
+  @media @tablet {
+    padding: 0 30px;
+  }
 }
 
 #vignette {
@@ -20,7 +24,7 @@
   background-image: radial-gradient(
     ellipse closest-side,
     rgba(0, 0, 0, 0) 50%,
-    rgba(0, 0, 0, 0.5) 100%
+    rgba(128, 128, 128, 0.5) 100%
   );
   pointer-events: none;
 }

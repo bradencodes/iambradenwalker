@@ -100,7 +100,7 @@ const Content = () => {
         <Projects projectsRef={projectsRef}/>
       </div>
 
-      <div id='vignette' />
+      {/* <div id='vignette' /> */}
     </Fragment>
   );
 };
