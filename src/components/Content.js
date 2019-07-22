@@ -7,7 +7,7 @@ import Intro from './content/Intro';
 import Projects from './content/Projects';
 
 const snapConfig = {
-  scrollSnapDestination: '0% 73%',
+  scrollSnapDestination: '0% 100%',
   scrollTimeout: 100,
   scrollTime: 300
 };
@@ -97,7 +97,7 @@ const Content = () => {
           realRef={realRef}
         />
 
-        <Projects projectsRef={projectsRef}/>
+        <Projects projectsRef={projectsRef} />
       </div>
 
       {/* <div id='vignette' /> */}

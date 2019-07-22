@@ -6,19 +6,16 @@ const Navbar = () => {
       <div className='gradient' />
 
       <div className='nav-link'>
-        <div className='link-dot'>
-          <div className='link-text'>Intro</div>
-        </div>
+        <div className='link-dot' />
+        <div className='link-text'>Intro</div>
       </div>
       <div className='nav-link'>
-        <div className='link-dot'>
-          <div className='link-text'>Projects</div>
-        </div>
+        <div className='link-dot' />
+        <div className='link-text'>Projects</div>
       </div>
       <div className='nav-link'>
-        <div className='link-dot'>
-          <div className='link-text'>Contact</div>
-        </div>
+        <div className='link-dot' />
+        <div className='link-text'>Contact</div>
       </div>
     </div>
   );

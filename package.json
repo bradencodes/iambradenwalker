@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
+    "react-app-polyfill": "^1.0.1",
     "react-dom": "^16.8.6",
     "react-flip-toolkit": "^6.6.9",
     "react-intersection-observer": "^8.23.0",
@@ -28,7 +29,8 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
   }
 }

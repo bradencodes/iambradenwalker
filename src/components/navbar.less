@@ -7,18 +7,18 @@
   font-size: 20px;
   padding-left: 50px;
   z-index: 1000;
-
   @media @tablet {
     width: 100%;
     height: 200px;
-    padding: 20px 0 0 0;
-    grid-template-columns: 10fr 1fr 10fr;
-    align-content: flex-start;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 16px;
   }
-
-  &:hover .nav-link > .link-dot > .link-text {
+  &:hover .nav-link > .link-text {
     opacity: 1;
-    transform: translateX(12px);
+    width: auto;
+    transform: translateX(6px);
   }
 
   .gradient {
@@ -32,7 +32,6 @@
     );
     z-index: -1;
     pointer-events: none;
-
     @media @tablet {
       width: 100%;
       height: 20vh;
@@ -47,19 +46,17 @@
   .nav-link {
     display: flex;
     align-items: center;
+    height: 10px;
     cursor: pointer;
-
     @media @tablet {
-      justify-content: center;
+      margin-top: 20px;
+      justify-content: flex-start;
     }
-
-    &:hover .link-dot > .link-text {
-      transform: translateX(18px);
+    &:hover .link-text {
+      transform: translateX(12px);
 
       transition-duration: 200ms;
-      transition-delay: 0ms;
     }
-
     &:hover .link-dot {
       background: @primary;
 
@@ -67,20 +64,22 @@
     }
 
     .link-dot {
-      position: relative;
-      height: 8px;
-      width: 8px;
+      height: 10px;
+      width: 10px;
       border: 2px @primary solid;
       border-radius: 500px;
       transition-duration: 200ms;
-
-      .link-text {
-        opacity: 0;
-        transition-duration: 350ms;
-        position: absolute;
-        left: 0;
-        margin-left: 5px;
+      @media @phone {
+        height: 8px;
+        width: 8px;
+        border: 1px @primary solid;
       }
+    }
+
+    .link-text {
+      opacity: 0;
+      transition: opacity 350ms, transform 350ms;
+      width: 0;
     }
   }
 }
