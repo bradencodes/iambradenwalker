@@ -1,5 +1,6 @@
 import React, { Fragment, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import 'intersection-observer';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 import ScrollSnap from 'scroll-snap';
 
