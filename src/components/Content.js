@@ -46,6 +46,14 @@ const Content = () => {
 
   let allInView = +`${+meInView}${+roleInView}${+adjectiveInView}${+realInView}${+projectsInView}`;
 
+  const prefixAppear = el => {
+    el.style.opacity = 1;
+    el.classList.remove('offset');
+    setTimeout(() => {
+      el.classList.remove('transition');
+    }, 300);
+  };
+
   const getPrefixText = () => {
     let prefix = [];
     if (meInView) prefix = ['I', ' AM'];
@@ -56,9 +64,9 @@ const Content = () => {
     else prefix = [];
 
     return prefix.map((word, i) => (
-      <Fragment key={i}>
-        <Flipped flipId={word}>
-          <span>{word}</span>
+      <Fragment key={word}>
+        <Flipped flipId={word} onAppear={prefixAppear}>
+          <span className='transition offset'>{word}</span>
         </Flipped>
       </Fragment>
     ));
