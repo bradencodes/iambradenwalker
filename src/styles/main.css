@@ -140,7 +140,7 @@ html {
   justify-content: flex-end;
 }
 .content .intro-text .intro-text-container .offset {
-  transform: translate(0px, -100px);
+  transform: translate(0px, 100px);
   overflow: hidden;
 }
 .content .intro-text .intro-text-container .transition {
@@ -157,7 +157,7 @@ html {
   justify-content: flex-end;
 }
 .content .first .intro-text-container .offset {
-  transform: translate(0px, -100px);
+  transform: translate(0px, 100px);
   overflow: hidden;
 }
 .content .first .intro-text-container .transition {
@@ -183,7 +183,7 @@ html {
   justify-content: flex-end;
 }
 .content .iam .intro-text-container .offset {
-  transform: translate(0px, -100px);
+  transform: translate(0px, 100px);
   overflow: hidden;
 }
 .content .iam .intro-text-container .transition {

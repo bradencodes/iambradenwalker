@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fullpage/react-fullpage": "^0.1.15",
     "intersection-observer": "^0.7.0",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.1",
