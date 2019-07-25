@@ -1,28 +1,14 @@
 import React, { Fragment, useRef, useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import ReactFullpage from '@fullpage/react-fullpage';
 import { useInView } from 'react-intersection-observer';
 import 'intersection-observer';
 import { Flipper, Flipped } from 'react-flip-toolkit';
-import ScrollSnap from 'scroll-snap';
 
 import Intro from './content/Intro';
 import Projects from './content/Projects';
 
-const snapConfig = {
-  scrollSnapDestination: '0% 100%',
-  scrollTimeout: 100,
-  scrollTime: 300
-};
-
 const Content = () => {
-  // Snapping
-  let container = useRef();
-
-  useEffect(() => {
-    const element = container.current;
-    const snapObject = new ScrollSnap(element, snapConfig);
-    snapObject.bind();
-  });
-
   //Intersection observers
   const [meRef, meInView] = useInView({
     threshhold: 1
@@ -90,26 +76,32 @@ const Content = () => {
 
   return (
     <Fragment>
-      <div className='content' ref={container}>
-        <Flipper className={'iam'} flipKey={allInView} spring={'wobbly'}>
-          <div className='intro-text-container'>
-            {getPrefixText()}
+      <Flipper className={'iam'} flipKey={allInView} spring={'wobbly'}>
+        <div className='intro-text-container'>
+          {getPrefixText()}
 
-            {getInvisibleText()}
-          </div>
-        </Flipper>
+          {getInvisibleText()}
+        </div>
+      </Flipper>
 
-        <Intro
-          meRef={meRef}
-          roleRef={roleRef}
-          adjectiveRef={adjectiveRef}
-          realRef={realRef}
-        />
+      <ReactFullpage
+        scrollingSpeed={1000}
+        sectionsColor={[]}
+        render={({ state, fullpageApi }) => {
+          return (
+            <ReactFullpage.Wrapper>
+              <Intro
+                meRef={meRef}
+                roleRef={roleRef}
+                adjectiveRef={adjectiveRef}
+                realRef={realRef}
+              />
 
-        <Projects projectsRef={projectsRef} />
-      </div>
-
-      {/* <div id='vignette' /> */}
+              <Projects projectsRef={projectsRef} />
+            </ReactFullpage.Wrapper>
+          );
+        }}
+      />
     </Fragment>
   );
 };

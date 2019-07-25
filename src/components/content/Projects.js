@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from 'react';
 
 const Projects = ({ projectsRef }) => {
   return (
     <Fragment>
-      <div className='intro-text snap'>
+      <div className='section intro-text'>
         <div className='intro-text-container'>
           <span className='invisible' ref={projectsRef}>
             I
@@ -13,7 +13,7 @@ const Projects = ({ projectsRef }) => {
         </div>
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 const Intro = ({ meRef, roleRef, adjectiveRef, realRef }) => {
   return (
     <Fragment>
-      <div className='first snap'>
+      <div className='section intro-text'>
         <div className='intro-text-container'>
           <span className='invisible' ref={meRef}>
             I
@@ -14,7 +14,7 @@ const Intro = ({ meRef, roleRef, adjectiveRef, realRef }) => {
         </div>
       </div>
 
-      <div className='intro-text snap'>
+      <div className='section intro-text'>
         <div className='intro-text-container'>
           <span className='invisible' ref={roleRef}>
             I
@@ -27,7 +27,7 @@ const Intro = ({ meRef, roleRef, adjectiveRef, realRef }) => {
         </div>
       </div>
 
-      <div className='intro-text snap'>
+      <div className='section intro-text'>
         <div className='intro-text-container'>
           <span className='invisible' ref={adjectiveRef}>
             I
@@ -37,7 +37,7 @@ const Intro = ({ meRef, roleRef, adjectiveRef, realRef }) => {
         </div>
       </div>
 
-      <div className='intro-text snap'>
+      <div className='section intro-text'>
         <div className='intro-text-container'>
           <span className='invisible' ref={realRef}>
             I
