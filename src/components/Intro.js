@@ -2,7 +2,7 @@ import React from 'react';
 
 const Intro = () => {
   return (
-    <>
+    <div className='introContainer'>
       <div className='scrollerSection'>
         <h1 className='introText'>I AM BRADEN WALKER</h1>
       </div>
@@ -12,7 +12,7 @@ const Intro = () => {
       <div className='scrollerSection'>
         <h2 className='introText'>I AM CREATIVE</h2>
       </div>
-    </>
+    </div>
   );
 };
 
