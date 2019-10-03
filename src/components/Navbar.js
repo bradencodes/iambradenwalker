@@ -15,9 +15,9 @@ const Navbar = () => {
       onMouseEnter={() => toggleHovered()}
       onMouseLeave={() => toggleHovered()}
     >
-      <div className='gradient' />
+      {/* <div className='gradient' /> */}
 
-      <Flipper flipKey={hovered}>
+      <Flipper flipKey={hovered} className='navbar-container'>
         <div className='nav-link'>
           <Flipped flipId='intro-dot'>
             <div className='link-dot' />
