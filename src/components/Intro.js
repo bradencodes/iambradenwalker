@@ -4,13 +4,13 @@ const Intro = () => {
   return (
     <>
       <div className='scrollerSection'>
-        <div className='introText'>I AM BRADEN WALKER</div>
+        <h1 className='introText'>I AM BRADEN WALKER</h1>
       </div>
       <div className='scrollerSection'>
-        <div className='introText'>I AM A FULL STACK DEVELOPER</div>
+        <h2 className='introText'>I AM A FULL STACK DEVELOPER</h2>
       </div>
       <div className='scrollerSection'>
-        <div className='introText'>I AM CREATIVE</div>
+        <h2 className='introText'>I AM CREATIVE</h2>
       </div>
     </>
   );

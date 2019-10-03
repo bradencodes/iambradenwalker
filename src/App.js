@@ -3,7 +3,7 @@ import './styles/main.css';
 
 import Intro from './components/Intro';
 
-function App() {
+const App = () => {
   return (
     <div className='App scrollSnap'>
       <Intro />
