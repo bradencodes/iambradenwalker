@@ -7,7 +7,9 @@ import Nav from './components/Nav';
 function App() {
   useEffect(() => {
     window.addEventListener('resize', updateRatio);
-    window.scrollTo(0, 1);
+    ratio > 1
+      ? window.scrollTo(0, 1)
+      : window.scrollTo(0, document.documentElement.clientHeight * 0.2);
     return () => {
       window.removeEventListener('resize', updateRatio);
     };

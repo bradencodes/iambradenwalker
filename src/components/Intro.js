@@ -37,7 +37,7 @@ const Intro = ({ ratio }) => {
     threshhold: 1
   });
 
-  let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}${+realTextInView}${+projectsTextInView}`;
+  let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}`;
 
   const calcPeek = {
     marginBottom: ratio > 1 ? 'calc(-20vh - 2.9vw)' : 'calc(-20vh - 3.7vw)'
@@ -62,23 +62,42 @@ const Intro = ({ ratio }) => {
     </>
   );
 
+  const makeAnimatedText = words => (
+    <>
+      {words.map(word => (
+        <span>{word}</span>
+      ))}
+    </>
+  );
+
   const handleOverlayText = () => {
     if (meTextInView)
-      return <span>I AM {makeInvisibleText(['BRADEN ', 'WALKER.'])}</span>;
+      return (
+        <>
+          {makeAnimatedText(['I ', 'AM '])}
+          {makeInvisibleText(['BRADEN ', 'WALKER.'])}
+        </>
+      );
     else if (roleTextInView)
       return (
-        <span>
-          I AM A {makeInvisibleText(['FULL ', 'STACK ', 'DEVELOPER.'])}
-        </span>
+        <>
+          {makeAnimatedText(['I ', 'AM ', 'A '])}
+          {makeInvisibleText(['FULL ', 'STACK ', 'DEVELOPER.'])}
+        </>
       );
     else if (adjectiveTextInView)
-      return <span>I AM {makeInvisibleText(['CREATIVE.'])}</span>;
+      return (
+        <>
+          {makeAnimatedText(['I ', 'AM '])}
+          {makeInvisibleText(['CREATIVE.'])}
+        </>
+      );
   };
 
   return (
     <div className='introContainer'>
       <div
-        className={`scrollerSection ${meSectionInView ? 'snap' : ''}`}
+        className={`scrollerSection ${allInView > 1 ? 'snap' : ''}`}
         style={calcPeek}
         ref={meSection}
       >
@@ -87,7 +106,7 @@ const Intro = ({ ratio }) => {
         </h1>
       </div>
       <div
-        className={`scrollerSection ${roleSectionInView ? 'snap' : ''}`}
+        className={`scrollerSection ${allInView > 1 ? 'snap' : ''}`}
         style={calcPeek}
         ref={roleSection}
       >
@@ -96,7 +115,7 @@ const Intro = ({ ratio }) => {
         </h2>
       </div>
       <div
-        className={`scrollerSection ${adjectiveTextInView ? 'snap' : ''}`}
+        className={`scrollerSection ${allInView > 1 ? 'snap' : ''}`}
         style={calcPeek}
         ref={adjectiveSection}
       >
