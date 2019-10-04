@@ -350,35 +350,34 @@ template {
 .introContainer .introText .invisible {
   visibility: hidden;
 }
-.introContainer .introText span {
-  white-space: pre;
+.introContainer .introText .hideOverflow {
+  overflow: hidden;
 }
 @keyframes slideIn {
   0% {
-    opacity: 0;
     transform: translate(0, 100%);
   }
   100% {
-    opacity: 1;
     transform: translate(0, 0);
   }
 }
 .introContainer .introText .slideIn {
-  animation: slideIn 0.25s forwards;
+  animation: slideIn 0.35s forwards;
   animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 @keyframes slideOut {
-  0% {
-    opacity: 1;
-  }
   100% {
-    opacity: 0;
     transform: translate(0, -100%);
   }
 }
 .introContainer .introText .slideOut {
-  animation: slideOut 0.2s forwards;
+  animation: slideOut 0.3s forwards;
   animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+.introContainer .introText span {
+  white-space: pre;
+  display: inline-block;
+  padding-left: 0.2vw;
 }
 .introContainer .snap {
   scroll-snap-align: start;

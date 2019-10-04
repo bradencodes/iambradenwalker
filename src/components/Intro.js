@@ -53,7 +53,9 @@ const Intro = ({ ratio }) => {
   const makeInvisibleText = words => (
     <>
       {words.map(word => (
-        <span className='invisible'>{word}</span>
+        <span key={word} className='invisible'>
+          {word}
+        </span>
       ))}
     </>
   );
@@ -61,30 +63,34 @@ const Intro = ({ ratio }) => {
   const makeVisibleText = words => (
     <>
       {words.map(word => (
-        <span>{word}</span>
+        <span key={word}>{word}</span>
       ))}
     </>
   );
 
   const makeAnimatedText = words => {
     const onAppear = (el, i) => {
-      el.classList.add('slideIn');
+      const childSpan = el.querySelector('span');
+      el.style.opacity = 1;
+      childSpan.classList.add('slideIn');
       setTimeout(() => {
-        el.style.opacity = 1;
-        el.classList.remove('slideIn');
-      }, 500);
+        childSpan.classList.remove('slideIn');
+      }, 350);
     };
 
     const onExit = (el, i, removeElement) => {
-      el.classList.add('slideOut');
-      setTimeout(removeElement, 500);
+      const childSpan = el.querySelector('span');
+      childSpan.classList.add('slideOut');
+      setTimeout(removeElement, 300);
     };
 
     return (
       <>
         {words.map(word => (
-          <Flipped flipId={word} onAppear={onAppear} onExit={onExit}>
-            <span>{word}</span>
+          <Flipped key={word} flipId={word} onAppear={onAppear} onExit={onExit}>
+            <div className='hideOverflow'>
+              <span>{word}</span>
+            </div>
           </Flipped>
         ))}
       </>
