@@ -13,7 +13,7 @@ function App() {
     return () => {
       window.removeEventListener('resize', updateRatio);
     };
-  });
+  }, []);
 
   const [ratio, setRatio] = useState(
     document.documentElement.clientWidth / document.documentElement.clientHeight

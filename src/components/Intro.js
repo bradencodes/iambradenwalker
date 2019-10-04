@@ -40,11 +40,11 @@ const Intro = ({ ratio }) => {
   let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}`;
 
   const calcPeek = {
-    marginBottom: ratio > 1 ? 'calc(-20vh - 2.9vw)' : 'calc(-20vh - 3.7vw)'
+    marginBottom: ratio > 1 ? 'calc(-20vh - 2.6vw)' : 'calc(-20vh - 3.7vw)'
   };
 
   const calcFontSize = {
-    fontSize: ratio > 1 ? '8vw' : `11vw`
+    fontSize: ratio > 1 ? '7vw' : `11vw`
   };
 
   const overlaySectionStyle = {
