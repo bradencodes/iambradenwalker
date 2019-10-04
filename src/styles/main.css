@@ -337,13 +337,15 @@ template {
 .introContainer .scrollerSection {
   width: 100%;
   height: 100vh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   padding-top: 20vh;
 }
 .introContainer .scrollerSection .introText {
   margin: 0;
   text-align: right;
+}
+.introContainer .snap {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 #navContainer {
   position: fixed;
