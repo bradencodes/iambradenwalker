@@ -339,9 +339,12 @@ template {
   height: 100vh;
   padding-top: 20vh;
 }
-.introContainer .scrollerSection .introText {
+.introContainer .introText {
   margin: 0;
   text-align: right;
+}
+.introContainer .introText .invisible {
+  visibility: hidden;
 }
 .introContainer .snap {
   scroll-snap-align: start;
@@ -350,10 +353,6 @@ template {
 .introContainer .overlaySection {
   height: 100vh;
   padding: 20vh 5vw 0;
-}
-.introContainer .overlaySection .introText {
-  margin: 0;
-  text-align: right;
 }
 #navContainer {
   position: fixed;

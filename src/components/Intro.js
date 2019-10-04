@@ -54,6 +54,27 @@ const Intro = ({ ratio }) => {
     top: 0
   };
 
+  const makeInvisibleText = words => (
+    <>
+      {words.map(word => (
+        <span className='invisible'>{word}</span>
+      ))}
+    </>
+  );
+
+  const handleOverlayText = () => {
+    if (meTextInView)
+      return <span>I AM {makeInvisibleText(['BRADEN ', 'WALKER'])}</span>;
+    else if (roleTextInView)
+      return (
+        <span>
+          I AM A {makeInvisibleText(['FULL ', 'STACK ', 'DEVELOPER'])}
+        </span>
+      );
+    else if (adjectiveTextInView)
+      return <span>I AM {makeInvisibleText(['CREATIVE'])}</span>;
+  };
+
   return (
     <div className='introContainer'>
       <div
@@ -62,7 +83,7 @@ const Intro = ({ ratio }) => {
         ref={meSection}
       >
         <h1 className='introText' style={calcFontSize} ref={meText}>
-          I AM BRADEN WALKER
+          {makeInvisibleText(['I ', 'AM '])}BRADEN WALKER.
         </h1>
       </div>
       <div
@@ -71,7 +92,7 @@ const Intro = ({ ratio }) => {
         ref={roleSection}
       >
         <h2 className='introText' style={calcFontSize} ref={roleText}>
-          I AM A FULL STACK DEVELOPER
+          {makeInvisibleText(['I ', 'AM ', 'A '])}FULL STACK DEVELOPER.
         </h2>
       </div>
       <div
@@ -80,13 +101,13 @@ const Intro = ({ ratio }) => {
         ref={adjectiveSection}
       >
         <h2 className='introText' style={calcFontSize} ref={adjectiveText}>
-          I AM CREATIVE
+          {makeInvisibleText(['I ', 'AM '])}CREATIVE.
         </h2>
       </div>
 
       <div className='overlaySection' style={overlaySectionStyle}>
         <h2 className='introText' style={calcFontSize}>
-          I AM BRADEN WALKER
+          {handleOverlayText()}
         </h2>
       </div>
     </div>
