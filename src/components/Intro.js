@@ -64,15 +64,15 @@ const Intro = ({ ratio }) => {
 
   const handleOverlayText = () => {
     if (meTextInView)
-      return <span>I AM {makeInvisibleText(['BRADEN ', 'WALKER'])}</span>;
+      return <span>I AM {makeInvisibleText(['BRADEN ', 'WALKER.'])}</span>;
     else if (roleTextInView)
       return (
         <span>
-          I AM A {makeInvisibleText(['FULL ', 'STACK ', 'DEVELOPER'])}
+          I AM A {makeInvisibleText(['FULL ', 'STACK ', 'DEVELOPER.'])}
         </span>
       );
     else if (adjectiveTextInView)
-      return <span>I AM {makeInvisibleText(['CREATIVE'])}</span>;
+      return <span>I AM {makeInvisibleText(['CREATIVE.'])}</span>;
   };
 
   return (
