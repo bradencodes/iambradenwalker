@@ -7,6 +7,7 @@ import Nav from './components/Nav';
 function App() {
   useEffect(() => {
     window.addEventListener('resize', updateRatio);
+    window.scrollTo(0, 1);
     return () => {
       window.removeEventListener('resize', updateRatio);
     };
@@ -27,7 +28,8 @@ function App() {
     <div className='App'>
       <Nav ratio={ratio} />
       <div className={`content ${ratio > 1 ? 'sideContent' : 'bottomContent'}`}>
-        <Intro ratio={ratio}/>
+        <Intro ratio={ratio} />
+        <div style={{ width: '100%', height: '3000px' }}></div>
       </div>
     </div>
   );

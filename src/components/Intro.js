@@ -1,12 +1,12 @@
 import React from 'react';
 
 const Intro = ({ ratio }) => {
-  const calcFontSize = {
-    fontSize: ratio > 1 ? '8vw' : `12vw`
+  const calcPeek = {
+    marginBottom: ratio > 1 ? 'calc(-20vh - 2.9vw)' : 'calc(-20vh - 3.7vw)'
   }
 
-  const calcPeek = {
-    marginBottom: ratio > 1 ? 'calc(-20vh - 2.9vw)' : 'calc(-20vh - 4.3vw)'
+  const calcFontSize = {
+    fontSize: ratio > 1 ? '8vw' : `11vw`
   }
 
   return (
@@ -19,6 +19,10 @@ const Intro = ({ ratio }) => {
       </div>
       <div className='scrollerSection' style={calcPeek}>
         <h2 className='introText' style={calcFontSize}>I AM CREATIVE</h2>
+      </div>
+
+      <div className='scrollerSection' style={calcPeek}>
+        <h2 className='introText' style={calcFontSize}>I HAVE SOME PROJECTS</h2>
       </div>
     </div>
   );
