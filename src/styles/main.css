@@ -350,8 +350,20 @@ template {
 .introContainer .introText .invisible {
   visibility: hidden;
 }
-.introContainer .introText .hideOverflow {
+.introContainer .introText .wordContainer {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.introContainer .introText .wordContainer .sizer {
+  visibility: hidden;
+}
+.introContainer .introText .wordContainer .wordList {
+  height: 0;
+  width: 0;
+}
+.introContainer .introText .wordContainer .wordList .word {
+  transition: transform 0.35s;
 }
 @keyframes slideIn {
   0% {
@@ -371,7 +383,7 @@ template {
   }
 }
 .introContainer .introText .slideOut {
-  animation: slideOut 0.3s forwards;
+  animation: slideOut 0.35s forwards;
   animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 .introContainer .introText span {

@@ -36,7 +36,7 @@ const Intro = ({ ratio }) => {
   const [projectsSection, projectsSectionInView] = useInView({
     threshhold: 1
   });
-  let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}`;
+  let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}${+realTextInView}`;
 
   const snapSectionStyle = {
     marginBottom: ratio > 1 ? 'calc(-20vh - 2.6vw)' : 'calc(-20vh - 3.7vw)'
@@ -69,6 +69,8 @@ const Intro = ({ ratio }) => {
   );
 
   const makeAnimatedText = words => {
+    const wordMatrix = [['I '], ['AM ', 'WILL '], ['A ']];
+
     const onAppear = (el, i) => {
       const childSpan = el.querySelector('span');
       el.style.opacity = 1;
@@ -86,10 +88,27 @@ const Intro = ({ ratio }) => {
 
     return (
       <>
-        {words.map(word => (
-          <Flipped key={word} flipId={word} onAppear={onAppear} onExit={onExit}>
-            <div className='hideOverflow'>
-              <span>{word}</span>
+        {words.map((wordIndex, i) => (
+          <Flipped
+            key={i}
+            flipId={`${i}`}
+            onAppear={onAppear}
+            onExit={onExit}
+            translate
+          >
+            <div className='wordContainer'>
+              <span className='sizer'>{wordMatrix[i][wordIndex]}</span>
+              <div className='wordList'>
+                {wordMatrix[i].map(word => (
+                  <span
+                    style={{ transform: `translateY(${-100 * (wordIndex+1)}%)` }}
+                    key={word}
+                    className='word'
+                  >
+                    {word}
+                  </span>
+                ))}
+              </div>
             </div>
           </Flipped>
         ))}
@@ -101,22 +120,29 @@ const Intro = ({ ratio }) => {
     if (meTextInView)
       return (
         <>
-          {makeAnimatedText(['I ', 'AM '])}
+          {makeAnimatedText([0, 0])}
           {makeInvisibleText(['BRADEN ', 'WALKER.'])}
         </>
       );
     else if (roleTextInView)
       return (
         <>
-          {makeAnimatedText(['I ', 'AM ', 'A '])}
+          {makeAnimatedText([0, 0, 0])}
           {makeInvisibleText(['FULL ', 'STACK ', 'DEVELOPER.'])}
         </>
       );
     else if (adjectiveTextInView)
       return (
         <>
-          {makeAnimatedText(['I ', 'AM '])}
+          {makeAnimatedText([0, 0])}
           {makeInvisibleText(['CREATIVE.'])}
+        </>
+      );
+    else
+      return (
+        <>
+          {makeAnimatedText([0, 1])}
+          {makeInvisibleText(['MAKE ', 'YOU ', 'MONEY.'])}
         </>
       );
   };
@@ -124,7 +150,7 @@ const Intro = ({ ratio }) => {
   return (
     <div className='introContainer'>
       <div
-        className={`snapSection ${allInView > 1 ? 'snap' : ''}`}
+        className={`snapSection ${allInView ? 'snap' : ''}`}
         style={snapSectionStyle}
         ref={meSection}
       >
@@ -134,7 +160,7 @@ const Intro = ({ ratio }) => {
         </h1>
       </div>
       <div
-        className={`snapSection ${allInView > 1 ? 'snap' : ''}`}
+        className={`snapSection ${allInView ? 'snap' : ''}`}
         style={snapSectionStyle}
         ref={roleSection}
       >
@@ -144,13 +170,23 @@ const Intro = ({ ratio }) => {
         </h2>
       </div>
       <div
-        className={`snapSection ${allInView > 1 ? 'snap' : ''}`}
+        className={`snapSection ${allInView ? 'snap' : ''}`}
         style={snapSectionStyle}
         ref={adjectiveSection}
       >
         <h2 className='introText' style={calcFontSize} ref={adjectiveText}>
           {makeInvisibleText(['I ', 'AM '])}
           {makeVisibleText(['CREATIVE.'])}
+        </h2>
+      </div>
+      <div
+        className={`snapSection ${allInView ? 'snap' : ''}`}
+        style={snapSectionStyle}
+        ref={realSection}
+      >
+        <h2 className='introText' style={calcFontSize} ref={realText}>
+          {makeInvisibleText(['I ', 'WILL '])}
+          {makeVisibleText(['MAKE ', 'YOU ', 'MONEY.'])}
         </h2>
       </div>
 
