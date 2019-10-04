@@ -33,34 +33,9 @@
         width: 0;
 
         .word {
-          transition: transform .35s;
+          transition: transform 0.35s;
         }
       }
-    }
-
-    @keyframes slideIn {
-      0% {
-        transform: translate(0, 100%);
-      }
-      100% {
-        transform: translate(0, 0);
-      }
-    }
-
-    .slideIn {
-      animation: slideIn 0.35s forwards;
-      animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
-    }
-
-    @keyframes slideOut {
-      100% {
-        transform: translate(0, -100%);
-      }
-    }
-
-    .slideOut {
-      animation: slideOut 0.35s forwards;
-      animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
     }
 
     span {

@@ -75,16 +75,15 @@ const Intro = ({ ratio }) => {
       <>
         {words.map((wordIndex, i) => (
           <Flipped key={i} flipId={`${i}`} translate>
-            <div
-              className='wordContainer'
-              style={{ width: wordIndex ? 'auto' : '0' }}
-            >
+            <div className='wordContainer'>
               <span className='sizer'>{wordMatrix[i][wordIndex]}</span>
               <div className='wordList'>
                 {wordMatrix[i].map(word => (
                   <span
                     style={{
-                      transform: `translateY(${-100 * (wordIndex + 1)}%)`
+                      transform: `translateY(${-100 * (wordIndex + 1)}%)`,
+                      width: wordIndex ? 'auto' : '100%',
+                      height: wordIndex ? 'auto' : '100%'
                     }}
                     key={word}
                     className='word'
