@@ -75,13 +75,11 @@ const Intro = ({ ratio }) => {
       ['BRADEN ', 'A ', 'CREATIVE.', 'MAKE ']
     ];
 
-    const isInvisible = (r, c) => {
-      if (r === 2) {
-        if (c === 1) return false;
-        return true;
-      }
-      return false;
-    };
+    const wordMatrixVisibility = [
+      [true],
+      [true, true],
+      [false, true, false, false]
+    ];
 
     return (
       <>
@@ -94,9 +92,9 @@ const Intro = ({ ratio }) => {
                   <span
                     style={{
                       transform: `translateY(${-100 * (wordIndex + 1)}%)`,
-                      visibility: isInvisible(r, c)
-                        ? 'hidden'
-                        : 'visible'
+                      visibility: wordMatrixVisibility[r][c]
+                        ? 'visible'
+                        : 'hidden'
                     }}
                     key={word}
                     className='word'
@@ -113,6 +111,20 @@ const Intro = ({ ratio }) => {
   };
 
   const handleOverlayText = () => {
+    /*
+    const wordMatrix = [
+      ['I '],
+      ['AM ', 'WILL '],
+      ['BRADEN ', 'A ', 'CREATIVE.', 'MAKE ']
+    ];
+
+    const wordMatrixVisibility = [
+      [true],
+      [true, true],
+      [false, true, false, false]
+    ];
+    */
+
     if (meTextInView)
       return (
         <>
@@ -138,8 +150,8 @@ const Intro = ({ ratio }) => {
     else
       return (
         <>
-          {makeAnimatedText([1, 1, 0])}
-          {makeInvisibleText(['BRADEN ', 'WALKER.'])}
+          {makeAnimatedText([0, 0, 0])}
+          {makeInvisibleText(['WALKER.'])}
         </>
       );
   };
