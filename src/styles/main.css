@@ -334,7 +334,7 @@ template {
 .introContainer {
   margin-top: 1px;
 }
-.introContainer .scrollerSection {
+.introContainer .snapSection {
   width: 100%;
   height: 100vh;
   padding-top: 20vh;
@@ -352,6 +352,33 @@ template {
 }
 .introContainer .introText span {
   white-space: pre;
+}
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translate(0, 100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+.introContainer .introText .slideIn {
+  animation: slideIn 0.25s forwards;
+  animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, -100%);
+  }
+}
+.introContainer .introText .slideOut {
+  animation: slideOut 0.2s forwards;
+  animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 .introContainer .snap {
   scroll-snap-align: start;

@@ -36,10 +36,9 @@ const Intro = ({ ratio }) => {
   const [projectsSection, projectsSectionInView] = useInView({
     threshhold: 1
   });
-
   let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}`;
 
-  const calcPeek = {
+  const snapSectionStyle = {
     marginBottom: ratio > 1 ? 'calc(-20vh - 2.6vw)' : 'calc(-20vh - 3.7vw)'
   };
 
@@ -67,15 +66,30 @@ const Intro = ({ ratio }) => {
     </>
   );
 
-  const makeAnimatedText = words => (
-    <>
-      {words.map(word => (
-        <Flipped flipId={word}>
-          <span>{word}</span>
-        </Flipped>
-      ))}
-    </>
-  );
+  const makeAnimatedText = words => {
+    const onAppear = (el, i) => {
+      el.classList.add('slideIn');
+      setTimeout(() => {
+        el.style.opacity = 1;
+        el.classList.remove('slideIn');
+      }, 500);
+    };
+
+    const onExit = (el, i, removeElement) => {
+      el.classList.add('slideOut');
+      setTimeout(removeElement, 500);
+    };
+
+    return (
+      <>
+        {words.map(word => (
+          <Flipped flipId={word} onAppear={onAppear} onExit={onExit}>
+            <span>{word}</span>
+          </Flipped>
+        ))}
+      </>
+    );
+  };
 
   const handleOverlayText = () => {
     if (meTextInView)
@@ -104,8 +118,8 @@ const Intro = ({ ratio }) => {
   return (
     <div className='introContainer'>
       <div
-        className={`scrollerSection ${allInView > 1 ? 'snap' : ''}`}
-        style={calcPeek}
+        className={`snapSection ${allInView > 1 ? 'snap' : ''}`}
+        style={snapSectionStyle}
         ref={meSection}
       >
         <h1 className='introText' style={calcFontSize} ref={meText}>
@@ -114,8 +128,8 @@ const Intro = ({ ratio }) => {
         </h1>
       </div>
       <div
-        className={`scrollerSection ${allInView > 1 ? 'snap' : ''}`}
-        style={calcPeek}
+        className={`snapSection ${allInView > 1 ? 'snap' : ''}`}
+        style={snapSectionStyle}
         ref={roleSection}
       >
         <h2 className='introText' style={calcFontSize} ref={roleText}>
@@ -124,8 +138,8 @@ const Intro = ({ ratio }) => {
         </h2>
       </div>
       <div
-        className={`scrollerSection ${allInView > 1 ? 'snap' : ''}`}
-        style={calcPeek}
+        className={`snapSection ${allInView > 1 ? 'snap' : ''}`}
+        style={snapSectionStyle}
         ref={adjectiveSection}
       >
         <h2 className='introText' style={calcFontSize} ref={adjectiveText}>
