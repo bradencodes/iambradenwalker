@@ -39,8 +39,6 @@ const Intro = ({ ratio }) => {
 
   let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}${+realTextInView}${+projectsTextInView}`;
 
-  console.log(adjectiveTextInView);
-
   const calcPeek = {
     marginBottom: ratio > 1 ? 'calc(-20vh - 2.9vw)' : 'calc(-20vh - 3.7vw)'
   };
@@ -49,8 +47,10 @@ const Intro = ({ ratio }) => {
     fontSize: ratio > 1 ? '8vw' : `11vw`
   };
 
-  const calcOverlayPosition = {
+  const overlaySectionStyle = {
+    width: ratio > 1 ? '67vw' : '100%',
     position: 'fixed',
+    right: 0,
     top: 0
   };
 
@@ -84,7 +84,7 @@ const Intro = ({ ratio }) => {
         </h2>
       </div>
 
-      <div className='scrollerSection' style={calcOverlayPosition}>
+      <div className='overlaySection' style={overlaySectionStyle}>
         <h2 className='introText' style={calcFontSize}>
           I AM BRADEN WALKER
         </h2>
