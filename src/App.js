@@ -27,7 +27,7 @@ function App() {
     <div className='App'>
       <Nav ratio={ratio} />
       <div className={`content ${ratio > 1 ? 'sideContent' : 'bottomContent'}`}>
-        <Intro />
+        <Intro ratio={ratio}/>
       </div>
     </div>
   );
