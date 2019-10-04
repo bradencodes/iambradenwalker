@@ -341,10 +341,17 @@ template {
 }
 .introContainer .introText {
   margin: 0;
+  width: 100%;
   text-align: right;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .introContainer .introText .invisible {
   visibility: hidden;
+}
+.introContainer .introText span {
+  white-space: pre;
 }
 .introContainer .snap {
   scroll-snap-align: start;
@@ -353,6 +360,9 @@ template {
 .introContainer .overlaySection {
   height: 100vh;
   padding: 20vh 5vw 0;
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 #navContainer {
   position: fixed;

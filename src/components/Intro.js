@@ -48,10 +48,7 @@ const Intro = ({ ratio }) => {
   };
 
   const overlaySectionStyle = {
-    width: ratio > 1 ? '67vw' : '100%',
-    position: 'fixed',
-    right: 0,
-    top: 0
+    width: ratio > 1 ? '67vw' : '100%'
   };
 
   const makeInvisibleText = words => (
@@ -62,10 +59,20 @@ const Intro = ({ ratio }) => {
     </>
   );
 
-  const makeAnimatedText = words => (
+  const makeVisibleText = words => (
     <>
       {words.map(word => (
         <span>{word}</span>
+      ))}
+    </>
+  );
+
+  const makeAnimatedText = words => (
+    <>
+      {words.map(word => (
+        <Flipped flipId={word}>
+          <span>{word}</span>
+        </Flipped>
       ))}
     </>
   );
@@ -102,7 +109,8 @@ const Intro = ({ ratio }) => {
         ref={meSection}
       >
         <h1 className='introText' style={calcFontSize} ref={meText}>
-          {makeInvisibleText(['I ', 'AM '])}BRADEN WALKER.
+          {makeInvisibleText(['I ', 'AM '])}
+          {makeVisibleText(['BRADEN ', 'WALKER.'])}
         </h1>
       </div>
       <div
@@ -111,7 +119,8 @@ const Intro = ({ ratio }) => {
         ref={roleSection}
       >
         <h2 className='introText' style={calcFontSize} ref={roleText}>
-          {makeInvisibleText(['I ', 'AM ', 'A '])}FULL STACK DEVELOPER.
+          {makeInvisibleText(['I ', 'AM ', 'A '])}
+          {makeVisibleText(['FULL ', 'STACK ', 'DEVELOPER.'])}
         </h2>
       </div>
       <div
@@ -120,15 +129,18 @@ const Intro = ({ ratio }) => {
         ref={adjectiveSection}
       >
         <h2 className='introText' style={calcFontSize} ref={adjectiveText}>
-          {makeInvisibleText(['I ', 'AM '])}CREATIVE.
+          {makeInvisibleText(['I ', 'AM '])}
+          {makeVisibleText(['CREATIVE.'])}
         </h2>
       </div>
 
-      <div className='overlaySection' style={overlaySectionStyle}>
-        <h2 className='introText' style={calcFontSize}>
-          {handleOverlayText()}
-        </h2>
-      </div>
+      <Flipper flipKey={allInView} spring={'wobbly'}>
+        <div className='overlaySection' style={overlaySectionStyle}>
+          <h2 className='introText' style={calcFontSize}>
+            {handleOverlayText()}
+          </h2>
+        </div>
+      </Flipper>
     </div>
   );
 };

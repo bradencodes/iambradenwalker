@@ -9,11 +9,18 @@
 
   .introText {
     margin: 0;
-    // font-size: 8vw;
+    width: 100%;
     text-align: right;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 
     .invisible {
       visibility: hidden;
+    }
+
+    span {
+      white-space: pre;
     }
   }
 
@@ -25,5 +32,8 @@
   .overlaySection {
     height: 100vh;
     padding: 20vh 5vw 0;
+    position: fixed;
+    right: 0;
+    top: 0;
   }
 }
