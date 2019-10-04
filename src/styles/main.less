@@ -4,19 +4,24 @@
 }
 
 body {
-  overflow: hidden;
+  height: 100vh;
 }
 
 html {
   font-size: 62.5%;
+  background: @secondary;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
 }
+
+@import 'normalize.less';
 
 @import 'variables.less';
 
-@import '../components/app.less';
+@import '../App.less';
 
-@import '../components/navbar.less';
+@import '../styles/Intro.less';
 
-@import '../components/content.less';
-
-@import '../components/content/intro.less';
+@import '../styles/Nav.less';
