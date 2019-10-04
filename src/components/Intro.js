@@ -69,39 +69,23 @@ const Intro = ({ ratio }) => {
   );
 
   const makeAnimatedText = words => {
-    const wordMatrix = [['I '], ['AM ', 'WILL '], ['A ']];
-
-    const onAppear = (el, i) => {
-      const childSpan = el.querySelector('span');
-      el.style.opacity = 1;
-      childSpan.classList.add('slideIn');
-      setTimeout(() => {
-        childSpan.classList.remove('slideIn');
-      }, 350);
-    };
-
-    const onExit = (el, i, removeElement) => {
-      const childSpan = el.querySelector('span');
-      childSpan.classList.add('slideOut');
-      setTimeout(removeElement, 300);
-    };
+    const wordMatrix = [['', 'I '], ['', 'AM ', 'WILL '], ['', 'A ']];
 
     return (
       <>
         {words.map((wordIndex, i) => (
-          <Flipped
-            key={i}
-            flipId={`${i}`}
-            onAppear={onAppear}
-            onExit={onExit}
-            translate
-          >
-            <div className='wordContainer'>
+          <Flipped key={i} flipId={`${i}`} translate>
+            <div
+              className='wordContainer'
+              style={{ width: wordIndex ? 'auto' : '0' }}
+            >
               <span className='sizer'>{wordMatrix[i][wordIndex]}</span>
               <div className='wordList'>
                 {wordMatrix[i].map(word => (
                   <span
-                    style={{ transform: `translateY(${-100 * (wordIndex+1)}%)` }}
+                    style={{
+                      transform: `translateY(${-100 * (wordIndex + 1)}%)`
+                    }}
                     key={word}
                     className='word'
                   >
@@ -120,29 +104,36 @@ const Intro = ({ ratio }) => {
     if (meTextInView)
       return (
         <>
-          {makeAnimatedText([0, 0])}
+          {makeAnimatedText([1, 1, 0])}
           {makeInvisibleText(['BRADEN ', 'WALKER.'])}
         </>
       );
     else if (roleTextInView)
       return (
         <>
-          {makeAnimatedText([0, 0, 0])}
+          {makeAnimatedText([1, 1, 1])}
           {makeInvisibleText(['FULL ', 'STACK ', 'DEVELOPER.'])}
         </>
       );
     else if (adjectiveTextInView)
       return (
         <>
-          {makeAnimatedText([0, 0])}
+          {makeAnimatedText([1, 1, 0])}
           {makeInvisibleText(['CREATIVE.'])}
+        </>
+      );
+    else if (realTextInView)
+      return (
+        <>
+          {makeAnimatedText([1, 2, 0])}
+          {makeInvisibleText(['MAKE ', 'YOU ', 'MONEY.'])}
         </>
       );
     else
       return (
         <>
-          {makeAnimatedText([0, 1])}
-          {makeInvisibleText(['MAKE ', 'YOU ', 'MONEY.'])}
+          {makeAnimatedText([1, 1, 0])}
+          {makeInvisibleText(['BRADEN ', 'WALKER.'])}
         </>
       );
   };
