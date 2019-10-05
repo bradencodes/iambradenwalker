@@ -43,11 +43,11 @@ const Intro = ({ ratio }) => {
   };
 
   const calcFontSize = {
-    fontSize: ratio > 1 ? '7vw' : `11vw`
+    fontSize: `${20 - ratio * 3}vw`
   };
 
   const overlaySectionStyle = {
-    width: ratio > 1 ? '67vw' : '100%'
+    width: ratio > 1 ? '80vw' : '100%'
   };
 
   const makeInvisibleText = words => (
@@ -63,7 +63,7 @@ const Intro = ({ ratio }) => {
   const makeVisibleText = words => (
     <>
       {words.map(word => (
-        <span key={word}>{word}</span>
+        <span key={word} dangerouslySetInnerHTML={{ __html: word }}></span>
       ))}
     </>
   );
@@ -136,7 +136,7 @@ const Intro = ({ ratio }) => {
       return (
         <>
           {makeAnimatedText([0, 0, 1])}
-          {makeInvisibleText(['FULL ', 'STACK ', 'DEVELOPER.'])}
+          {makeInvisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER.'])}
         </>
       );
     else if (adjectiveTextInView) return <>{makeAnimatedText([0, 0, 2])}</>;
@@ -175,7 +175,7 @@ const Intro = ({ ratio }) => {
       >
         <h2 className='introText' style={calcFontSize} ref={roleText}>
           {makeInvisibleText(['I ', 'AM ', 'A '])}
-          {makeVisibleText(['FULL ', 'STACK ', 'DEVELOPER.'])}
+          {makeVisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER'])}
         </h2>
       </div>
       <div

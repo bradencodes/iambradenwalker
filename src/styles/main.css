@@ -325,7 +325,7 @@ template {
   height: 100vh;
 }
 .App .sideContent {
-  padding: 0 5vw 0 33vw;
+  padding: 0 5vw 0 20vw;
 }
 .App .bottomContent {
   padding: 0 5vw 0;
@@ -373,6 +373,10 @@ template {
   white-space: pre;
   display: inline-block;
   padding-left: 0.2vw;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
 #introContainer .snap {
   scroll-snap-align: start;
@@ -391,7 +395,7 @@ template {
   left: 0;
 }
 .sideNav {
-  width: 33vw;
+  width: 20vw;
   height: 100vh;
 }
 .topNav {
