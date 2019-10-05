@@ -328,10 +328,15 @@ template {
   padding: 0 5vw 0 33vw;
 }
 .App .bottomContent {
-  padding: 20vh 5vw 0;
+  padding: 0 5vw 0;
 }
-#introContainer {
-  margin-top: 1px;
+.App #frame {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: solid 1vw #000000;
 }
 #introContainer .snapSection {
   width: 100%;

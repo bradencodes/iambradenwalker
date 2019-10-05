@@ -39,7 +39,7 @@ const Intro = ({ ratio }) => {
   let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}${+realTextInView}`;
 
   const snapSectionStyle = {
-    marginBottom: ratio > 1 ? 'calc(-20vh - 2.6vw)' : 'calc(-20vh - 3.7vw)'
+    marginBottom: ratio > 1 ? 'calc(-20vh - 3.6vw)' : 'calc(-20vh - 4.7vw)'
   };
 
   const calcFontSize = {
