@@ -47,8 +47,8 @@ const Intro = ({ ratio }) => {
   };
 
   const overlaySectionStyle = {
-    width: ratio > 1 ? '80vw' : '100%',
-    padding: ratio > 1 ? '20vh 5vw 0 0' : '20vh 5vw 0'
+    // width: ratio > 1 ? '80vw' : '100%',
+    padding: ratio > 1 ? '20vh 5vw 0 20vw' : '20vh 5vw 0'
   };
 
   const makeInvisibleText = words => (
