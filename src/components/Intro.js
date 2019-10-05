@@ -43,7 +43,7 @@ const Intro = ({ ratio }) => {
   };
 
   const calcFontSize = {
-    fontSize: `${20 - ratio * 3}vw`
+    fontSize: `${8 + 4 / ratio}vw`
   };
 
   const overlaySectionStyle = {
@@ -174,8 +174,8 @@ const Intro = ({ ratio }) => {
         ref={roleSection}
       >
         <h2 className='introText' style={calcFontSize} ref={roleText}>
-          {makeInvisibleText(['I ', 'AM ', 'A '])}
-          {makeVisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER'])}
+          {makeInvisibleText(['I', 'AM', 'A'])}
+          FULL STACK DEVE&shy;LOPER.
         </h2>
       </div>
       <div
@@ -185,7 +185,7 @@ const Intro = ({ ratio }) => {
       >
         <h2 className='introText' style={calcFontSize} ref={adjectiveText}>
           {makeInvisibleText(['I ', 'AM '])}
-          {makeVisibleText(['CREATIVE.'])}
+          CREA&shy;TIVE.
         </h2>
       </div>
       <div

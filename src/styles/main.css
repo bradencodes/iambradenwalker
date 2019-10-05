@@ -373,10 +373,6 @@ template {
   white-space: pre;
   display: inline-block;
   padding-left: 0.2vw;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
 }
 #introContainer .snap {
   scroll-snap-align: start;
