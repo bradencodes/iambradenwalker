@@ -75,7 +75,7 @@ const Intro = ({ ratio }) => {
     const wordMatrix = [
       ['I '],
       ['AM ', 'WILL '],
-      ['BRADEN ', 'A ', 'CREA&shy;TIVE.', 'MAKE ']
+      ['BRADEN ', 'A ', 'CREA&shy;TIVE.', 'WORK ']
     ];
 
     const wordMatrixVisibility = [
@@ -146,7 +146,7 @@ const Intro = ({ ratio }) => {
       return (
         <>
           {makeAnimatedText([0, 1, 3])}
-          {makeInvisibleText(['YOU ', 'MONEY.'])}
+          {makeInvisibleText(['FOR ', 'YOU.'])}
         </>
       );
     else
@@ -197,7 +197,7 @@ const Intro = ({ ratio }) => {
       >
         <h2 className='introText' style={introTextStyle} ref={realText}>
           {makeInvisibleText(['I ', 'WILL '])}
-          {makeVisibleText(['MAKE ', 'YOU ', 'MONEY.'])}
+          {makeVisibleText(['WORK ', 'FOR ', 'YOU.'])}
         </h2>
       </div>
 
