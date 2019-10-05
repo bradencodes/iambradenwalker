@@ -370,7 +370,7 @@ template {
   transition: transform 0.35s;
 }
 #introContainer .introText span {
-  white-space: pre;
+  white-space: pre-wrap;
   display: inline-block;
   padding-left: 0.2vw;
 }
@@ -380,7 +380,7 @@ template {
 }
 #introContainer .overlaySection {
   height: 100vh;
-  padding: 20vh 5vw 0;
+  width: 100%;
   position: fixed;
   right: 0;
   top: 0;

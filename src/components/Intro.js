@@ -42,20 +42,23 @@ const Intro = ({ ratio }) => {
     // marginBottom: ratio > 1 ? 'calc(-20vh - 3.6vw)' : 'calc(-20vh - 4.7vw)'
   };
 
-  const calcFontSize = {
+  const introTextStyle = {
     fontSize: `${8 + 4 / ratio}vw`
   };
 
   const overlaySectionStyle = {
-    width: ratio > 1 ? '80vw' : '100%'
+    width: ratio > 1 ? '80vw' : '100%',
+    padding: ratio > 1 ? '20vh 5vw 0 0' : '20vh 5vw 0'
   };
 
   const makeInvisibleText = words => (
     <>
       {words.map(word => (
-        <span key={word} className='invisible'>
-          {word}
-        </span>
+        <span
+          key={word}
+          className='invisible'
+          dangerouslySetInnerHTML={{ __html: word }}
+        ></span>
       ))}
     </>
   );
@@ -72,7 +75,7 @@ const Intro = ({ ratio }) => {
     const wordMatrix = [
       ['I '],
       ['AM ', 'WILL '],
-      ['BRADEN ', 'A ', 'CREATIVE.', 'MAKE ']
+      ['BRADEN ', 'A ', 'CREA&shy;TIVE.', 'MAKE ']
     ];
 
     const wordMatrixVisibility = [
@@ -98,9 +101,8 @@ const Intro = ({ ratio }) => {
                     }}
                     key={word}
                     className='word'
-                  >
-                    {word}
-                  </span>
+                    dangerouslySetInnerHTML={{ __html: word }}
+                  ></span>
                 ))}
               </div>
             </div>
@@ -163,7 +165,7 @@ const Intro = ({ ratio }) => {
         style={snapSectionStyle}
         ref={meSection}
       >
-        <h1 className='introText' style={calcFontSize} ref={meText}>
+        <h1 className='introText' style={introTextStyle} ref={meText}>
           {makeInvisibleText(['I ', 'AM '])}
           {makeVisibleText(['BRADEN ', 'WALKER.'])}
         </h1>
@@ -173,9 +175,9 @@ const Intro = ({ ratio }) => {
         style={snapSectionStyle}
         ref={roleSection}
       >
-        <h2 className='introText' style={calcFontSize} ref={roleText}>
-          {makeInvisibleText(['I', 'AM', 'A'])}
-          FULL STACK DEVE&shy;LOPER.
+        <h2 className='introText' style={introTextStyle} ref={roleText}>
+          {makeInvisibleText(['I ', 'AM ', 'A '])}
+          {makeVisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER.'])}
         </h2>
       </div>
       <div
@@ -183,9 +185,9 @@ const Intro = ({ ratio }) => {
         style={snapSectionStyle}
         ref={adjectiveSection}
       >
-        <h2 className='introText' style={calcFontSize} ref={adjectiveText}>
+        <h2 className='introText' style={introTextStyle} ref={adjectiveText}>
           {makeInvisibleText(['I ', 'AM '])}
-          CREA&shy;TIVE.
+          {makeVisibleText(['CREA&shy;TIVE.'])}
         </h2>
       </div>
       <div
@@ -193,7 +195,7 @@ const Intro = ({ ratio }) => {
         style={snapSectionStyle}
         ref={realSection}
       >
-        <h2 className='introText' style={calcFontSize} ref={realText}>
+        <h2 className='introText' style={introTextStyle} ref={realText}>
           {makeInvisibleText(['I ', 'WILL '])}
           {makeVisibleText(['MAKE ', 'YOU ', 'MONEY.'])}
         </h2>
@@ -201,7 +203,7 @@ const Intro = ({ ratio }) => {
 
       <Flipper flipKey={allInView} spring={'wobbly'}>
         <div className='overlaySection' style={overlaySectionStyle}>
-          <h2 className='introText' style={calcFontSize}>
+          <h2 className='introText' style={introTextStyle}>
             {handleOverlayText()}
           </h2>
         </div>
