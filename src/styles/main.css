@@ -351,6 +351,17 @@ template {
   flex-wrap: wrap;
   justify-content: flex-end;
 }
+#introContainer .introText .animatedTextContainer {
+  display: flex;
+  position: relative;
+}
+#introContainer .introText .animatedTextContainer .sizer {
+  visibility: hidden;
+}
+#introContainer .introText .animatedTextContainer .animatedText {
+  display: flex;
+  position: absolute;
+}
 #introContainer .introText .invisible {
   visibility: hidden;
 }
@@ -358,9 +369,6 @@ template {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-}
-#introContainer .introText .wordContainer .sizer {
-  visibility: hidden;
 }
 #introContainer .introText .wordContainer .wordList {
   height: 0;
@@ -372,7 +380,7 @@ template {
 #introContainer .introText span {
   white-space: pre-wrap;
   display: inline-block;
-  padding-left: 0.2vw;
+  padding: 0 0.3vw;
 }
 #introContainer .snap {
   scroll-snap-align: start;

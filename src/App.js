@@ -30,7 +30,7 @@ function App() {
         <Intro ratio={ratio} />
         <div style={{ width: '100%', height: '3000px' }}></div>
       </div>
-      <div id='frame' style={{ borderWidth: `${1 + .5 / ratio}vw` }}/>
+      {/* <div id='frame' style={{ borderWidth: `${1 + .5 / ratio}vw` }}/> */}
     </div>
   );
 }

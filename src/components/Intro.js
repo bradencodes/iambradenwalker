@@ -53,13 +53,15 @@ const Intro = ({ ratio }) => {
 
   const makeInvisibleText = words => (
     <>
-      {words.map(word => (
-        <span
-          key={word}
-          className='invisible'
-          dangerouslySetInnerHTML={{ __html: word }}
-        ></span>
-      ))}
+      {words.map(word =>
+        !word ? null : (
+          <span
+            key={word}
+            className='invisible'
+            dangerouslySetInnerHTML={{ __html: word }}
+          ></span>
+        )
+      )}
     </>
   );
 
@@ -72,66 +74,59 @@ const Intro = ({ ratio }) => {
   );
 
   const makeAnimatedText = wordIndices => {
-    const wordMatrix = [
-      ['I '],
-      ['AM ', 'WILL '],
-      ['BRADEN ', 'A ', 'CREA&shy;TIVE.', 'WORK ']
-    ];
+    const wordMatrix = [['I '], ['AM ', 'WILL '], ['blank', 'A ', 'blank']];
 
-    const wordMatrixVisibility = [
-      [true],
-      [true, true],
-      [false, true, false, false]
-    ];
+    const wordMatrixVisibility = [[true], [true, true], [false, true, false]];
+
+    // The actual text that should show
+    const word1 = wordMatrix[0][wordIndices[0]];
+    const word2 = wordMatrix[1][wordIndices[1]];
+    const word3 =
+      wordMatrix[2][wordIndices[2]] !== 'blank'
+        ? wordMatrix[2][wordIndices[2]]
+        : null;
 
     return (
       <>
-        {wordIndices.map((wordIndex, r) => (
-          <Flipped key={r} flipId={`${r}`} translate>
-            <div className='wordContainer'>
-              <span className='sizer'>{wordMatrix[r][wordIndex]}</span>
-              <div className='wordList'>
-                {wordMatrix[r].map((word, c) => (
-                  <span
-                    style={{
-                      transform: `translateY(${-100 * (wordIndex + 1)}%)`,
-                      visibility: wordMatrixVisibility[r][c]
-                        ? 'visible'
-                        : 'hidden'
-                    }}
-                    key={word}
-                    className='word'
-                    dangerouslySetInnerHTML={{ __html: word }}
-                  ></span>
-                ))}
-              </div>
+        <Flipped flipId='animatedText' translate>
+          <div className='animatedTextContainer'>
+            <div className='sizer'>
+              {makeInvisibleText([word1, word2, word3])}
             </div>
-          </Flipped>
-        ))}
+            <div className='animatedText'>
+              {wordIndices.map((wordIndex, r) => (
+                <div key={r} className='wordContainer'>
+                  <span className='sizer'>{wordMatrix[r][wordIndex]}</span>
+                  <div className='wordList'>
+                    {wordMatrix[r].map((word, c) => (
+                      <span
+                        style={{
+                          transform: `translateY(${-100 * (wordIndex + 1)}%)`,
+                          visibility: wordMatrixVisibility[r][c]
+                            ? 'visible'
+                            : 'hidden'
+                        }}
+                        key={word + c}
+                        className='word'
+                        dangerouslySetInnerHTML={{ __html: word }}
+                      ></span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Flipped>
       </>
     );
   };
 
   const handleOverlayText = () => {
-    /*
-    const wordMatrix = [
-      ['I '],
-      ['AM ', 'WILL '],
-      ['BRADEN ', 'A ', 'CREATIVE.', 'MAKE ']
-    ];
-
-    const wordMatrixVisibility = [
-      [true],
-      [true, true],
-      [false, true, false, false]
-    ];
-    */
-
     if (meTextInView)
       return (
         <>
           {makeAnimatedText([0, 0, 0])}
-          {makeInvisibleText(['WALKER.'])}
+          {makeInvisibleText(['BRADEN ', 'WALKER.'])}
         </>
       );
     else if (roleTextInView)
@@ -141,19 +136,25 @@ const Intro = ({ ratio }) => {
           {makeInvisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER.'])}
         </>
       );
-    else if (adjectiveTextInView) return <>{makeAnimatedText([0, 0, 2])}</>;
+    else if (adjectiveTextInView)
+      return (
+        <>
+          {makeAnimatedText([0, 0, 2])}
+          {makeInvisibleText(['CREATIVE.'])}
+        </>
+      );
     else if (realTextInView)
       return (
         <>
-          {makeAnimatedText([0, 1, 3])}
-          {makeInvisibleText(['FOR ', 'YOU.'])}
+          {makeAnimatedText([0, 1, 2])}
+          {makeInvisibleText(['WORK ', 'FOR ', 'YOU.'])}
         </>
       );
     else
       return (
         <>
           {makeAnimatedText([0, 0, 0])}
-          {makeInvisibleText(['WALKER.'])}
+          {makeInvisibleText(['BRADEN ', 'WALKER.'])}
         </>
       );
   };

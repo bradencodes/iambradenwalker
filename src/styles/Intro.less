@@ -13,6 +13,21 @@
     flex-wrap: wrap;
     justify-content: flex-end;
 
+    .animatedTextContainer {
+      display: flex;
+      position: relative;
+
+      .sizer {
+        visibility: hidden;
+      }
+
+      .animatedText {
+        display: flex;
+        position: absolute;
+        // left: 0;
+      }
+    }
+
     .invisible {
       visibility: hidden;
     }
@@ -21,10 +36,6 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-
-      .sizer {
-        visibility: hidden;
-      }
 
       .wordList {
         height: 0;
@@ -39,7 +50,7 @@
     span {
       white-space: pre-wrap;
       display: inline-block;
-      padding-left: 0.2vw;
+      padding: 0 0.3vw;
     }
   }
 
