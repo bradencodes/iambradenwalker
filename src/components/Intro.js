@@ -157,7 +157,7 @@ const Intro = ({ ratio }) => {
   };
 
   return (
-    <div className='introContainer'>
+    <div id='introContainer'>
       <div
         className={`snapSection ${allInView ? 'snap' : ''}`}
         style={snapSectionStyle}
