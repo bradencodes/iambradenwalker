@@ -336,7 +336,7 @@ template {
   position: fixed;
   top: 0;
   left: 0;
-  border: solid 1vw #000000;
+  border: solid #000000;
 }
 #introContainer .snapSection {
   width: 100%;
