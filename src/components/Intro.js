@@ -101,7 +101,7 @@ const Intro = ({ ratio }) => {
                     {wordMatrix[r].map((word, c) => (
                       <span
                         style={{
-                          transform: `translateY(${-100 * (wordIndex + 1)}%)`,
+                          transform: `translateY(${-100 * wordIndex}%)`,
                           visibility: wordMatrixVisibility[r][c]
                             ? 'visible'
                             : 'hidden'

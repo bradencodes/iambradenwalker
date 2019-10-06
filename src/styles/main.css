@@ -346,7 +346,6 @@ template {
 #introContainer .introText {
   margin: 0;
   width: 100%;
-  text-align: right;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -362,20 +361,20 @@ template {
   display: flex;
   position: absolute;
 }
-#introContainer .introText .invisible {
-  visibility: hidden;
-}
-#introContainer .introText .wordContainer {
+#introContainer .introText .animatedTextContainer .wordContainer {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
-#introContainer .introText .wordContainer .wordList {
-  height: 0;
-  width: 0;
+#introContainer .introText .animatedTextContainer .wordContainer .wordList {
+  position: absolute;
 }
-#introContainer .introText .wordContainer .wordList .word {
+#introContainer .introText .animatedTextContainer .wordContainer .wordList .word {
   transition: transform 0.35s;
+}
+#introContainer .introText .invisible {
+  visibility: hidden;
 }
 #introContainer .introText span {
   white-space: pre-wrap;
