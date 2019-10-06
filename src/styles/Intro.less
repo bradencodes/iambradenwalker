@@ -8,7 +8,7 @@
   .introText {
     margin: 0;
     width: 100%;
-    // text-align: right;
+    text-align: right;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
@@ -16,6 +16,7 @@
     .animatedTextContainer {
       display: flex;
       position: relative;
+      overflow: hidden;
 
       .sizer {
         visibility: hidden;
@@ -24,24 +25,26 @@
       .animatedText {
         display: flex;
         position: absolute;
-        // left: 0;
-        // right: 0;
-        // top: 0;
-        // bottom: 0;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
       }
 
       .wordContainer {
-        overflow: hidden;
         display: flex;
         flex-direction: column;
         position: relative;
+        text-align: left;
 
         .wordList {
           position: absolute;
-          // left: 0;
-          // right: 0;
-          // top: 0;
-          // bottom: 0;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
 
           .word {
             transition: transform 0.35s;

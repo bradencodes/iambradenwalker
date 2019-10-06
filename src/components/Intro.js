@@ -39,16 +39,16 @@ const Intro = ({ ratio }) => {
   let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}${+realTextInView}`;
 
   const snapSectionStyle = {
-    // marginBottom: ratio > 1 ? 'calc(-20vh - 3.6vw)' : 'calc(-20vh - 4.7vw)'
+    // marginBottom: ratio.isWide ? 'calc(-20vh - 3.6vw)' : 'calc(-20vh - 4.7vw)'
   };
 
   const introTextStyle = {
-    fontSize: `${8 + 4 / ratio}vw`
+    fontSize: `${8 + 4 / ratio.value}vw`
   };
 
   const overlaySectionStyle = {
-    // width: ratio > 1 ? '80vw' : '100%',
-    padding: ratio > 1 ? '20vh 5vw 0 20vw' : '20vh 5vw 0'
+    // width: ratio.isWide ? '80vw' : '100%',
+    padding: ratio.isWide ? '20vh 5vw 0 20vw' : '20vh 5vw 0'
   };
 
   const makeInvisibleText = words => (
