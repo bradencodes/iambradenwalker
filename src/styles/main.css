@@ -354,7 +354,6 @@ template {
 #introContainer .introText .animatedTextContainer {
   display: flex;
   position: relative;
-  overflow: hidden;
 }
 #introContainer .introText .animatedTextContainer .sizer {
   visibility: hidden;
@@ -362,8 +361,6 @@ template {
 #introContainer .introText .animatedTextContainer .animatedText {
   display: flex;
   position: absolute;
-  width: 100%;
-  height: 100%;
   left: 0;
   right: 0;
   top: 0;
@@ -371,9 +368,11 @@ template {
 }
 #introContainer .introText .animatedTextContainer .wordContainer {
   display: flex;
+  flex: none;
   flex-direction: column;
   position: relative;
   text-align: left;
+  overflow: hidden;
 }
 #introContainer .introText .animatedTextContainer .wordContainer .wordList {
   position: absolute;
