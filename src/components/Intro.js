@@ -39,119 +39,122 @@ const Intro = ({ ratio }) => {
   let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}${+realTextInView}`;
 
   const snapSectionStyle = {
-    marginBottom: ratio > 1 ? 'calc(-20vh - 3.6vw)' : 'calc(-20vh - 4.7vw)'
+    // marginBottom: ratio.isWide ? 'calc(-20vh - 3.6vw)' : 'calc(-20vh - 4.7vw)'
   };
 
-  const calcFontSize = {
-    fontSize: ratio > 1 ? '7vw' : `11vw`
+  const introTextStyle = {
+    fontSize: `${8 + 4 / ratio.value}vw`
   };
 
   const overlaySectionStyle = {
-    width: ratio > 1 ? '67vw' : '100%'
+    // width: ratio.isWide ? '80vw' : '100%',
+    padding: ratio.isWide ? '20vh 5vw 0 20vw' : '20vh 5vw 0'
   };
 
   const makeInvisibleText = words => (
     <>
-      {words.map(word => (
-        <span key={word} className='invisible'>
-          {word}
-        </span>
-      ))}
+      {words.map(word =>
+        !word ? null : (
+          <span
+            key={word}
+            className='invisible'
+            dangerouslySetInnerHTML={{ __html: word }}
+          ></span>
+        )
+      )}
     </>
   );
 
   const makeVisibleText = words => (
     <>
       {words.map(word => (
-        <span key={word}>{word}</span>
+        <span key={word} dangerouslySetInnerHTML={{ __html: word }}></span>
       ))}
     </>
   );
 
   const makeAnimatedText = wordIndices => {
-    const wordMatrix = [
-      ['I '],
-      ['AM ', 'WILL '],
-      ['BRADEN ', 'A ', 'CREATIVE.', 'MAKE ']
-    ];
+    const wordMatrix = [['I '], ['AM ', 'WILL '], ['blank', 'A ', 'blank']];
 
-    const wordMatrixVisibility = [
-      [true],
-      [true, true],
-      [false, true, false, false]
-    ];
+    const wordMatrixVisibility = [[true], [true, true], [false, true, false]];
+
+    // The actual text that should show
+    const word1 = wordMatrix[0][wordIndices[0]];
+    const word2 = wordMatrix[1][wordIndices[1]];
+    const word3 =
+      wordMatrix[2][wordIndices[2]] !== 'blank'
+        ? wordMatrix[2][wordIndices[2]]
+        : null;
 
     return (
       <>
-        {wordIndices.map((wordIndex, r) => (
-          <Flipped key={r} flipId={`${r}`} translate>
-            <div className='wordContainer'>
-              <span className='sizer'>{wordMatrix[r][wordIndex]}</span>
-              <div className='wordList'>
-                {wordMatrix[r].map((word, c) => (
-                  <span
-                    style={{
-                      transform: `translateY(${-100 * (wordIndex + 1)}%)`,
-                      visibility: wordMatrixVisibility[r][c]
-                        ? 'visible'
-                        : 'hidden'
-                    }}
-                    key={word}
-                    className='word'
-                  >
-                    {word}
-                  </span>
-                ))}
-              </div>
+        <Flipped flipId='animatedText' translate>
+          <div className='animatedTextContainer'>
+            <div className='sizer'>
+              {makeInvisibleText([word1, word2, word3])}
             </div>
-          </Flipped>
-        ))}
+            <div className='animatedText'>
+              {wordIndices.map((wordIndex, r) => (
+                <div key={r} className='wordContainer'>
+                  <span className='sizer'>{wordMatrix[r][wordIndex]}</span>
+                  <div className='wordList'>
+                    {wordMatrix[r].map((word, c) => (
+                      <span
+                        style={{
+                          transform: `translateY(${-100 * wordIndex}%)`,
+                          visibility: wordMatrixVisibility[r][c]
+                            ? 'visible'
+                            : 'hidden'
+                        }}
+                        key={word + c}
+                        className='word'
+                        dangerouslySetInnerHTML={{ __html: word }}
+                      ></span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Flipped>
       </>
     );
   };
 
   const handleOverlayText = () => {
-    /*
-    const wordMatrix = [
-      ['I '],
-      ['AM ', 'WILL '],
-      ['BRADEN ', 'A ', 'CREATIVE.', 'MAKE ']
-    ];
-
-    const wordMatrixVisibility = [
-      [true],
-      [true, true],
-      [false, true, false, false]
-    ];
-    */
-
     if (meTextInView)
       return (
         <>
           {makeAnimatedText([0, 0, 0])}
-          {makeInvisibleText(['WALKER.'])}
+          {makeInvisibleText(['BRADEN ', 'WALKER.'])}
         </>
       );
     else if (roleTextInView)
       return (
         <>
           {makeAnimatedText([0, 0, 1])}
-          {makeInvisibleText(['FULL ', 'STACK ', 'DEVELOPER.'])}
+          {makeInvisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER.'])}
         </>
       );
-    else if (adjectiveTextInView) return <>{makeAnimatedText([0, 0, 2])}</>;
+    else if (adjectiveTextInView)
+      return (
+        <>
+          {makeAnimatedText([0, 0, 2])}
+          {makeInvisibleText(['CREATIVE.'])}
+        </>
+      );
     else if (realTextInView)
       return (
         <>
-          {makeAnimatedText([0, 1, 3])}
-          {makeInvisibleText(['YOU ', 'MONEY.'])}
+          {makeAnimatedText([0, 1, 2])}
+          {makeInvisibleText(['WORK ', 'FOR ', 'YOU.'])}
         </>
       );
     else
       return (
         <>
           {makeAnimatedText([0, 0, 0])}
-          {makeInvisibleText(['WALKER.'])}
+          {makeInvisibleText(['BRADEN ', 'WALKER.'])}
         </>
       );
   };
@@ -163,7 +166,7 @@ const Intro = ({ ratio }) => {
         style={snapSectionStyle}
         ref={meSection}
       >
-        <h1 className='introText' style={calcFontSize} ref={meText}>
+        <h1 className='introText' style={introTextStyle} ref={meText}>
           {makeInvisibleText(['I ', 'AM '])}
           {makeVisibleText(['BRADEN ', 'WALKER.'])}
         </h1>
@@ -173,9 +176,9 @@ const Intro = ({ ratio }) => {
         style={snapSectionStyle}
         ref={roleSection}
       >
-        <h2 className='introText' style={calcFontSize} ref={roleText}>
+        <h2 className='introText' style={introTextStyle} ref={roleText}>
           {makeInvisibleText(['I ', 'AM ', 'A '])}
-          {makeVisibleText(['FULL ', 'STACK ', 'DEVELOPER.'])}
+          {makeVisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER.'])}
         </h2>
       </div>
       <div
@@ -183,9 +186,9 @@ const Intro = ({ ratio }) => {
         style={snapSectionStyle}
         ref={adjectiveSection}
       >
-        <h2 className='introText' style={calcFontSize} ref={adjectiveText}>
+        <h2 className='introText' style={introTextStyle} ref={adjectiveText}>
           {makeInvisibleText(['I ', 'AM '])}
-          {makeVisibleText(['CREATIVE.'])}
+          {makeVisibleText(['CREA&shy;TIVE.'])}
         </h2>
       </div>
       <div
@@ -193,15 +196,15 @@ const Intro = ({ ratio }) => {
         style={snapSectionStyle}
         ref={realSection}
       >
-        <h2 className='introText' style={calcFontSize} ref={realText}>
+        <h2 className='introText' style={introTextStyle} ref={realText}>
           {makeInvisibleText(['I ', 'WILL '])}
-          {makeVisibleText(['MAKE ', 'YOU ', 'MONEY.'])}
+          {makeVisibleText(['WORK ', 'FOR ', 'YOU.'])}
         </h2>
       </div>
 
       <Flipper flipKey={allInView} spring={'wobbly'}>
         <div className='overlaySection' style={overlaySectionStyle}>
-          <h2 className='introText' style={calcFontSize}>
+          <h2 className='introText' style={introTextStyle}>
             {handleOverlayText()}
           </h2>
         </div>
