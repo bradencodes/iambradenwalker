@@ -7,18 +7,27 @@ const Nav = ({ ratio }) => {
 
       <div className='spacingHelper' />
 
-      <div className='optionContainer'>
-        <div className='dot filled' />
-        <span className='text focused'>Intro</span>
+      <div className='optionContainerSelected'>
+        <div className='dot'>
+          <div className='dotOutline' />
+          <div className='dotFill' />
+        </div>
+        <span className='text'>Intro</span>
       </div>
 
       <div className='optionContainer'>
-        <div className='dot' />
+        <div className='dot'>
+          <div className='dotOutline' />
+          <div className='dotFill' />
+        </div>
         <span className='text'>Projects</span>
       </div>
 
       <div className='optionContainer'>
-        <div className='dot' />
+        <div className='dot'>
+          <div className='dotOutline' />
+          <div className='dotFill' />
+        </div>
         <span className='text'>Contact</span>
       </div>
 

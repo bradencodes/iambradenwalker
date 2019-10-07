@@ -414,6 +414,17 @@ template {
   justify-content: space-between;
   z-index: 100;
 }
+#navContainer:hover .background {
+  opacity: 1;
+}
+#navContainer:hover .optionContainer .text {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+#navContainer:hover .optionContainerSelected .text {
+  transform: translate(0, 0);
+  opacity: 1;
+}
 #navContainer .background {
   position: absolute;
   top: 0;
@@ -425,29 +436,110 @@ template {
   transition: opacity 0.35s;
   pointer-events: none;
 }
-#navContainer:hover .background {
-  opacity: 1;
-}
 #navContainer .optionContainer {
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+#navContainer .optionContainer:hover .dot .dotOutline {
+  opacity: 0;
+}
+#navContainer .optionContainer:hover .dot .dotFill {
+  opacity: 1;
 }
 #navContainer .optionContainer .dot {
   width: 1.5rem;
   height: 1.5rem;
+  position: relative;
   flex: none;
+}
+#navContainer .optionContainer .dot .dotOutline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
   border-radius: 50%;
   border: 0.2rem solid #000000;
+  opacity: 1;
+  transition: opacity 0.2s;
 }
-#navContainer .optionContainer .filled {
+#navContainer .optionContainer .dot .dotFill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 50%;
+  border: 0.2rem solid #000000;
+  opacity: 0;
   background-color: #000000;
+  transition: opacity 0.2s;
 }
 #navContainer .optionContainer .text {
-  margin-left: 1.5rem;
+  padding-left: 1.5rem;
   font-size: 2rem;
   flex: none;
+  transform: translate(-1.5rem, 0);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.2s;
 }
-#navContainer .optionContainer .focused {
+#navContainer .optionContainerSelected {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  cursor: default;
+}
+#navContainer .optionContainerSelected:hover .dot .dotOutline {
+  opacity: 0;
+}
+#navContainer .optionContainerSelected:hover .dot .dotFill {
+  opacity: 1;
+}
+#navContainer .optionContainerSelected .dot {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  flex: none;
+}
+#navContainer .optionContainerSelected .dot .dotOutline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 50%;
+  border: 0.2rem solid #000000;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+#navContainer .optionContainerSelected .dot .dotFill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 50%;
+  border: 0.2rem solid #000000;
+  opacity: 0;
+  background-color: #000000;
+  transition: opacity 0.2s;
+}
+#navContainer .optionContainerSelected .text {
+  padding-left: 1.5rem;
+  font-size: 2rem;
+  flex: none;
+  transform: translate(-1.5rem, 0);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.2s;
+}
+#navContainer .optionContainerSelected > .dot .dotOutline {
+  opacity: 0;
+}
+#navContainer .optionContainerSelected > .dot .dotFill {
+  opacity: 1;
+}
+#navContainer .optionContainerSelected > .text {
   font-weight: 900;
 }
 .sideNav {
@@ -464,4 +556,10 @@ template {
 }
 .topNav .background {
   background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.95) 10rem);
+}
+.topNav .optionContainer .text {
+  width: 0;
+}
+.topNav .optionContainerSelected .text {
+  width: 0;
 }
