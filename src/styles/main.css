@@ -446,6 +446,9 @@ template {
 #navContainer .optionContainer:hover .dot .dotFill {
   opacity: 1;
 }
+#navContainer .optionContainer:hover .text {
+  transform: translate(1.5rem, 0);
+}
 #navContainer .optionContainer .dot {
   width: 1.5rem;
   height: 1.5rem;
@@ -495,6 +498,9 @@ template {
 #navContainer .optionContainerSelected:hover .dot .dotFill {
   opacity: 1;
 }
+#navContainer .optionContainerSelected:hover .text {
+  transform: translate(1.5rem, 0);
+}
 #navContainer .optionContainerSelected .dot {
   width: 1.5rem;
   height: 1.5rem;
@@ -532,6 +538,9 @@ template {
   opacity: 0;
   transition: transform 0.3s, opacity 0.2s;
 }
+#navContainer .optionContainerSelected:hover .text {
+  transform: translate(0, 0);
+}
 #navContainer .optionContainerSelected > .dot .dotOutline {
   opacity: 0;
 }
@@ -540,6 +549,7 @@ template {
 }
 #navContainer .optionContainerSelected > .text {
   font-weight: 900;
+  transform: translate(1.5rem, 0);
 }
 .sideNav {
   height: 100vh;

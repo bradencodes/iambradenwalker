@@ -47,14 +47,10 @@ const Intro = ({ ratio }) => {
     </>
   );
 
-  const makeVisibleText = (words, inputRef) => (
+  const makeVisibleText = words => (
     <>
       {words.map((word, i) => (
-        <span
-          key={word}
-          ref={i === 0 ? inputRef : null}
-          dangerouslySetInnerHTML={{ __html: word }}
-        ></span>
+        <span key={word} dangerouslySetInnerHTML={{ __html: word }}></span>
       ))}
     </>
   );
@@ -153,7 +149,8 @@ const Intro = ({ ratio }) => {
       >
         <h1 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM '])}
-          {makeVisibleText(['BRADEN ', 'WALKER.'], meText)}
+          <div className='marker' ref={meText} />
+          {makeVisibleText(['BRADEN ', 'WALKER.'])}
         </h1>
       </div>
       <div
@@ -162,7 +159,8 @@ const Intro = ({ ratio }) => {
       >
         <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM ', 'A '])}
-          {makeVisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER.'], roleText)}
+          <div className='marker' ref={roleText} />
+          {makeVisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER.'])}
         </h2>
       </div>
       <div
@@ -171,7 +169,8 @@ const Intro = ({ ratio }) => {
       >
         <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM '])}
-          {makeVisibleText(['CREA&shy;TIVE.'], adjectiveText)}
+          <div className='marker' ref={adjectiveText} />
+          {makeVisibleText(['CREA&shy;TIVE.'])}
         </h2>
       </div>
       <div
@@ -180,7 +179,8 @@ const Intro = ({ ratio }) => {
       >
         <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'WILL '])}
-          {makeVisibleText(['WORK ', 'FOR ', 'YOU.'], realText)}
+          <div className='marker' ref={realText} />
+          {makeVisibleText(['WORK ', 'FOR ', 'YOU.'])}
         </h2>
       </div>
 
