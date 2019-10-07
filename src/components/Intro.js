@@ -17,25 +17,7 @@ const Intro = ({ ratio }) => {
   const [realText, realTextInView] = useInView({
     threshhold: 1
   });
-  const [projectsText, projectsTextInView] = useInView({
-    threshhold: 1
-  });
 
-  const [meSection, meSectionInView] = useInView({
-    threshhold: 1
-  });
-  const [roleSection, roleSectionInView] = useInView({
-    threshhold: 1
-  });
-  const [adjectiveSection, adjectiveSectionInView] = useInView({
-    threshhold: 1
-  });
-  const [realSection, realSectionInView] = useInView({
-    threshhold: 1
-  });
-  const [projectsSection, projectsSectionInView] = useInView({
-    threshhold: 1
-  });
   let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}${+realTextInView}`;
 
   const snapSectionStyle = {
@@ -65,10 +47,14 @@ const Intro = ({ ratio }) => {
     </>
   );
 
-  const makeVisibleText = words => (
+  const makeVisibleText = (words, inputRef) => (
     <>
-      {words.map(word => (
-        <span key={word} dangerouslySetInnerHTML={{ __html: word }}></span>
+      {words.map((word, i) => (
+        <span
+          key={word}
+          ref={i === 0 ? inputRef : null}
+          dangerouslySetInnerHTML={{ __html: word }}
+        ></span>
       ))}
     </>
   );
@@ -164,41 +150,37 @@ const Intro = ({ ratio }) => {
       <div
         className={`snapSection ${allInView ? 'snap' : ''}`}
         style={snapSectionStyle}
-        ref={meSection}
       >
-        <h1 className='introText' style={introTextStyle} ref={meText}>
+        <h1 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM '])}
-          {makeVisibleText(['BRADEN ', 'WALKER.'])}
+          {makeVisibleText(['BRADEN ', 'WALKER.'], meText)}
         </h1>
       </div>
       <div
         className={`snapSection ${allInView ? 'snap' : ''}`}
         style={snapSectionStyle}
-        ref={roleSection}
       >
-        <h2 className='introText' style={introTextStyle} ref={roleText}>
+        <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM ', 'A '])}
-          {makeVisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER.'])}
+          {makeVisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER.'], roleText)}
         </h2>
       </div>
       <div
         className={`snapSection ${allInView ? 'snap' : ''}`}
         style={snapSectionStyle}
-        ref={adjectiveSection}
       >
-        <h2 className='introText' style={introTextStyle} ref={adjectiveText}>
+        <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM '])}
-          {makeVisibleText(['CREA&shy;TIVE.'])}
+          {makeVisibleText(['CREA&shy;TIVE.'], adjectiveText)}
         </h2>
       </div>
       <div
         className={`snapSection ${allInView ? 'snap' : ''}`}
         style={snapSectionStyle}
-        ref={realSection}
       >
-        <h2 className='introText' style={introTextStyle} ref={realText}>
+        <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'WILL '])}
-          {makeVisibleText(['WORK ', 'FOR ', 'YOU.'])}
+          {makeVisibleText(['WORK ', 'FOR ', 'YOU.'], realText)}
         </h2>
       </div>
 
