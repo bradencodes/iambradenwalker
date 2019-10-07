@@ -14,12 +14,12 @@ const Nav = ({ ratio }) => {
 
       <div className='optionContainer'>
         <div className='dot' />
-        {/* <span className='text'>Projects</span> */}
+        <span className='text'>Projects</span>
       </div>
 
       <div className='optionContainer'>
         <div className='dot' />
-        {/* <span className='text'>Contact</span> */}
+        <span className='text'>Contact</span>
       </div>
 
       <div className='spacingHelper' />
