@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import 'intersection-observer';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 
-const Intro = ({ ratio }) => {
+const Intro = ({ ratio, scrollbarWidth }) => {
   //Intersection observers
   const [meText, meTextInView] = useInView({
     threshhold: 1
@@ -30,7 +30,9 @@ const Intro = ({ ratio }) => {
 
   const overlaySectionStyle = {
     // width: ratio.isWide ? '80vw' : '100%',
-    padding: ratio.isWide ? '20vh 5vw 0 20vw' : '20vh 5vw 0'
+    padding: ratio.isWide
+      ? `20vh calc(5vw + ${scrollbarWidth}px) 0 20vw`
+      : `20vh calc(5vw + ${scrollbarWidth}px) 0 5vw`
   };
 
   const makeInvisibleText = words => (

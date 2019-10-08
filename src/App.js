@@ -3,6 +3,8 @@ import './styles/main.css';
 
 import Intro from './components/Intro';
 import Nav from './components/Nav';
+import { get } from 'http';
+import { callbackify } from 'util';
 
 function App() {
   class Ratio {
@@ -36,16 +38,45 @@ function App() {
     };
   }, [Ratio]);
 
+  function getScrollbarWidth() {
+    // Creating invisible container
+    const outer = document.createElement('div');
+    outer.style.visibility = 'hidden';
+    outer.style.overflow = 'scroll'; // forcing scrollbar to appear
+    outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
+    document.body.appendChild(outer);
+
+    // Creating inner element and placing it in the container
+    const inner = document.createElement('div');
+    outer.appendChild(inner);
+
+    // Calculating difference between container's full width and the child width
+    const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+
+    // Removing temporary elements from the DOM
+    outer.parentNode.removeChild(outer);
+
+    return scrollbarWidth;
+  }
+
+  let scrollbarWidth = getScrollbarWidth();
+
   return (
     <div className='App'>
-      <Nav ratio={ratio} />
       <div
         className={`content ${ratio.isWide ? 'sideContent' : 'bottomContent'}`}
       >
-        <Intro ratio={ratio} />
+        <Intro ratio={ratio} scrollbarWidth={scrollbarWidth} />
         <div style={{ width: '100%', height: '3000px' }}></div>
       </div>
-      <div id='frame' style={{ borderWidth: `${1 + 0.5 / ratio.value}vw` }} />
+      <Nav ratio={ratio} />
+      <div
+        id='frame'
+        style={{
+          borderWidth: `${1 + 0.5 / ratio.value}vw`,
+          width: `calc(100% - ${scrollbarWidth}px)`
+        }}
+      />
     </div>
   );
 }
