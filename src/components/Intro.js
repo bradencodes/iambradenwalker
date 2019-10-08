@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import 'intersection-observer';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 
-const Intro = ({ ratio }) => {
+const Intro = ({ ratio, snapState, setSnapState }) => {
   //Intersection observers
   const [meText, meTextInView] = useInView({
     threshhold: 1
@@ -29,7 +29,6 @@ const Intro = ({ ratio }) => {
   };
 
   const overlaySectionStyle = {
-    // width: ratio.isWide ? '80vw' : '100%',
     padding: ratio.isWide ? '20vh 5vw 0 20vw' : '20vh 5vw 0'
   };
 
@@ -104,59 +103,79 @@ const Intro = ({ ratio }) => {
   };
 
   const handleOverlayText = () => {
-    if (meTextInView)
+    if (meTextInView) {
+      if (snapState.closestSection !== '#meSection') {
+        setSnapState(prevState => ({
+          ...prevState,
+          closestSection: '#meSection'
+        }));
+      }
       return (
         <>
           {makeAnimatedText([0, 0, 0])}
           {makeInvisibleText(['BRADEN ', 'WALKER.'])}
         </>
       );
-    else if (roleTextInView)
+    } else if (roleTextInView) {
+      if (snapState.closestSection !== '#meSection') {
+        setSnapState(prevState => ({
+          ...prevState,
+          closestSection: '#meSection'
+        }));
+      }
       return (
         <>
           {makeAnimatedText([0, 0, 1])}
           {makeInvisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER.'])}
         </>
       );
-    else if (adjectiveTextInView)
+    } else if (adjectiveTextInView) {
+      if (snapState.closestSection !== '#meSection') {
+        setSnapState(prevState => ({
+          ...prevState,
+          closestSection: '#meSection'
+        }));
+      }
       return (
         <>
           {makeAnimatedText([0, 0, 2])}
           {makeInvisibleText(['CREATIVE.'])}
         </>
       );
-    else if (realTextInView)
+    } else if (realTextInView) {
+      if (snapState.closestSection !== '#meSection') {
+        setSnapState(prevState => ({
+          ...prevState,
+          closestSection: '#meSection'
+        }));
+      }
       return (
         <>
           {makeAnimatedText([0, 1, 2])}
           {makeInvisibleText(['WORK ', 'FOR ', 'YOU.'])}
         </>
       );
-    else
-      return (
-        <>
-          {makeAnimatedText([0, 0, 0])}
-          {makeInvisibleText(['BRADEN ', 'WALKER.'])}
-        </>
-      );
+    } else {
+      if (snapState.closestSection !== '#meSection') {
+        setSnapState(prevState => ({
+          ...prevState,
+          closestSection: '#meSection'
+        }));
+      }
+      return null;
+    }
   };
 
   return (
     <div id='introContainer'>
-      <div
-        className={`snapSection ${allInView ? 'snap' : ''}`}
-        style={snapSectionStyle}
-      >
+      <div id='meSection' className='snapSection' style={snapSectionStyle}>
         <h1 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM '])}
           <div className='marker' ref={meText} />
           {makeVisibleText(['BRADEN ', 'WALKER.'])}
         </h1>
       </div>
-      <div
-        className={`snapSection ${allInView ? 'snap' : ''}`}
-        style={snapSectionStyle}
-      >
+      <div id='roleSection' className='snapSection' style={snapSectionStyle}>
         <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM ', 'A '])}
           <div className='marker' ref={roleText} />
@@ -164,7 +183,8 @@ const Intro = ({ ratio }) => {
         </h2>
       </div>
       <div
-        className={`snapSection ${allInView ? 'snap' : ''}`}
+        id='adjectiveSection'
+        className='snapSection'
         style={snapSectionStyle}
       >
         <h2 className='introText' style={introTextStyle}>
@@ -173,10 +193,7 @@ const Intro = ({ ratio }) => {
           {makeVisibleText(['CREA&shy;TIVE.'])}
         </h2>
       </div>
-      <div
-        className={`snapSection ${allInView ? 'snap' : ''}`}
-        style={snapSectionStyle}
-      >
+      <div id='realSection' className='snapSection' style={snapSectionStyle}>
         <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'WILL '])}
           <div className='marker' ref={realText} />

@@ -1,4 +1,6 @@
 #introContainer {
+  position: relative;
+
   .snapSection {
     width: 100%;
     // height: 100vh;
@@ -64,16 +66,12 @@
     }
   }
 
-  .snap {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-
   .overlaySection {
     height: 100vh;
     width: 100%;
     position: fixed;
     right: 0;
     top: 0;
+    pointer-events: none;
   }
 }
