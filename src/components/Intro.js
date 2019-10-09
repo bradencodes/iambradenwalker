@@ -20,7 +20,17 @@ const Intro = ({ ratio, scrollbarWidth }) => {
 
   let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}${+realTextInView}`;
 
-  const snapSectionStyle = {
+  const snapSectionStyle = section => {
+    if (document.getElementById(section)) {
+      const sectionHeight = document.getElementById(section).clientHeight;
+      const pageHeight = document.documentElement.clientHeight;
+      const difference = pageHeight - sectionHeight;
+      if (difference > 0) {
+        return {
+          marginBottom: `calc(${difference}px - 20vh - (${8 + 4 / ratio.value}vw / 2.1))`
+        };
+      }
+    }
     // marginBottom: ratio.isWide ? 'calc(-20vh - 3.6vw)' : 'calc(-20vh - 4.7vw)'
   };
 
@@ -146,8 +156,9 @@ const Intro = ({ ratio, scrollbarWidth }) => {
   return (
     <div id='introContainer'>
       <div
+        id='meSection'
         className={`snapSection ${allInView ? 'snap' : ''}`}
-        style={snapSectionStyle}
+        style={snapSectionStyle('meSection')}
       >
         <h1 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM '])}
@@ -156,8 +167,9 @@ const Intro = ({ ratio, scrollbarWidth }) => {
         </h1>
       </div>
       <div
+        id='roleSection'
         className={`snapSection ${allInView ? 'snap' : ''}`}
-        style={snapSectionStyle}
+        style={snapSectionStyle('roleSection')}
       >
         <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM ', 'A '])}
@@ -166,8 +178,9 @@ const Intro = ({ ratio, scrollbarWidth }) => {
         </h2>
       </div>
       <div
+        id='adjectiveSection'
         className={`snapSection ${allInView ? 'snap' : ''}`}
-        style={snapSectionStyle}
+        style={snapSectionStyle('adjectiveSection')}
       >
         <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM '])}
@@ -176,8 +189,9 @@ const Intro = ({ ratio, scrollbarWidth }) => {
         </h2>
       </div>
       <div
+        id='realSection'
         className={`snapSection ${allInView ? 'snap' : ''}`}
-        style={snapSectionStyle}
+        style={snapSectionStyle('realSection')}
       >
         <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'WILL '])}

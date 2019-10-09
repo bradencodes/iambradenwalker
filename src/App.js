@@ -67,7 +67,7 @@ function App() {
         className={`content ${ratio.isWide ? 'sideContent' : 'bottomContent'}`}
       >
         <Intro ratio={ratio} scrollbarWidth={scrollbarWidth} />
-        <div style={{ width: '100%', height: '3000px' }}></div>
+        <div style={{ width: '100%', height: '300vh' }}></div>
       </div>
       <Nav ratio={ratio} />
       <div
