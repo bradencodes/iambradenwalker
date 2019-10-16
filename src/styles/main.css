@@ -6,10 +6,18 @@ html {
   font-size: 62.5%;
   background: #ffffff;
 }
-#root {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+@supports not (scroll-snap-type: y mandatory) {
+  html {
+    height: 100vh;
+    overflow-y: scroll;
+  }
+}
+@supports (scroll-snap-type: y mandatory) {
+  #root {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
 }
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -338,6 +346,7 @@ template {
 #introContainer .snapSection {
   width: 100%;
   padding-top: 20vh;
+  transition: opacity 0.2s;
 }
 #introContainer .introText {
   margin: 0;

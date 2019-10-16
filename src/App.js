@@ -3,8 +3,6 @@ import './styles/main.css';
 
 import Intro from './components/Intro';
 import Nav from './components/Nav';
-import { get } from 'http';
-import { callbackify } from 'util';
 
 function App() {
   class Ratio {

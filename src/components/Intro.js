@@ -21,17 +21,35 @@ const Intro = ({ ratio, scrollbarWidth }) => {
   let allInView = +`${+meTextInView}${+roleTextInView}${+adjectiveTextInView}${+realTextInView}`;
 
   const snapSectionStyle = section => {
-    if (document.getElementById(section)) {
-      const sectionHeight = document.getElementById(section).clientHeight;
-      const pageHeight = document.documentElement.clientHeight;
-      const difference = pageHeight - sectionHeight;
-      if (difference > 0) {
-        return {
-          marginBottom: `calc(${difference}px - 20vh - (${8 + 4 / ratio.value}vw / 2.1))`
-        };
+    const handleMarginBottom = () => {
+      if (document.getElementById(section)) {
+        const sectionHeight = document.getElementById(section).clientHeight;
+        const pageHeight = document.documentElement.clientHeight;
+        const difference = pageHeight - sectionHeight;
+        if (difference > 0) {
+          return `calc(${difference}px - 20vh - (${8 +
+            4 / ratio.value}vw / 2.1))`;
+        } else return 0;
       }
-    }
-    // marginBottom: ratio.isWide ? 'calc(-20vh - 3.6vw)' : 'calc(-20vh - 4.7vw)'
+    };
+
+    const handleOpacity = () => {
+      if (meTextInView)
+        return section === 'meSection' ? 1 : 0.2;
+      else if (roleTextInView)
+        return section === 'roleSection' ? 1 : 0.2;
+      else if (adjectiveTextInView)
+        return section === 'adjectiveSection' ? 1 : 0.2;
+      else if (realTextInView)
+        return section === 'realSection' ? 1 : 0.2;
+      else
+        return .2;
+    };
+
+    return {
+      marginBottom: handleMarginBottom(),
+      opacity: handleOpacity()
+    };
   };
 
   const introTextStyle = {

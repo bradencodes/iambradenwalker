@@ -6,12 +6,18 @@
 html {
   font-size: 62.5%;
   background: @secondary;
+  @supports not (scroll-snap-type: y mandatory) {
+    height: 100vh;
+    overflow-y: scroll;
+  }
 }
 
 #root {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  @supports (scroll-snap-type: y mandatory) {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
 }
 
 @import 'normalize.less';
