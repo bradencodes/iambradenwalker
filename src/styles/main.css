@@ -496,7 +496,7 @@ template {
 }
 #navContainer .optionContainer .text {
   padding-left: 1.5rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   flex: none;
   transform: translate(-1.5rem, 0);
   opacity: 0;
@@ -548,7 +548,7 @@ template {
 }
 #navContainer .optionContainerSelected .text {
   padding-left: 1.5rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   flex: none;
   transform: translate(-1.5rem, 0);
   opacity: 0;
