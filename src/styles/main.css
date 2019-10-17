@@ -346,7 +346,6 @@ template {
 #introContainer .snapSection {
   width: 100%;
   padding-top: 20vh;
-  transition: opacity 0.2s;
 }
 #introContainer .introText {
   margin: 0;
@@ -356,6 +355,24 @@ template {
   flex-wrap: wrap;
   justify-content: flex-end;
   font-weight: 900;
+}
+#introContainer .introText .visibleTextContainer {
+  position: relative;
+}
+#introContainer .introText .visibleTextContainer .textFill {
+  color: #000000;
+  transition: opacity 0.2s;
+}
+#introContainer .introText .visibleTextContainer .textOutline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: opacity 0.2s;
+  -webkit-text-stroke: 2px #000000;
+  color: transparent;
 }
 #introContainer .introText .animatedTextContainer {
   display: flex;
@@ -454,8 +471,8 @@ template {
   transform: translate(1.5rem, 0);
 }
 #navContainer .optionContainer .dot {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 0.8rem;
+  height: 0.8rem;
   position: relative;
   flex: none;
 }
@@ -506,8 +523,8 @@ template {
   transform: translate(1.5rem, 0);
 }
 #navContainer .optionContainerSelected .dot {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 0.8rem;
+  height: 0.8rem;
   position: relative;
   flex: none;
 }

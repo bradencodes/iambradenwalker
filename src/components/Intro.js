@@ -33,23 +33,22 @@ const Intro = ({ ratio, scrollbarWidth }) => {
       }
     };
 
-    const handleOpacity = () => {
-      if (meTextInView)
-        return section === 'meSection' ? 1 : 0.2;
-      else if (roleTextInView)
-        return section === 'roleSection' ? 1 : 0.2;
-      else if (adjectiveTextInView)
-        return section === 'adjectiveSection' ? 1 : 0.2;
-      else if (realTextInView)
-        return section === 'realSection' ? 1 : 0.2;
-      else
-        return .2;
-    };
+    return;
 
     return {
-      marginBottom: handleMarginBottom(),
-      opacity: handleOpacity()
+      marginBottom: handleMarginBottom()
     };
+  };
+
+  const textFillOpacity = section => {
+    const faded = 0;
+
+    if (meTextInView) return section === 'meSection' ? 1 : faded;
+    else if (roleTextInView) return section === 'roleSection' ? 1 : faded;
+    else if (adjectiveTextInView)
+      return section === 'adjectiveSection' ? 1 : faded;
+    else if (realTextInView) return section === 'realSection' ? 1 : faded;
+    else return faded;
   };
 
   const introTextStyle = {
@@ -77,13 +76,26 @@ const Intro = ({ ratio, scrollbarWidth }) => {
     </>
   );
 
-  const makeVisibleText = words => (
-    <>
-      {words.map((word, i) => (
-        <span key={word} dangerouslySetInnerHTML={{ __html: word }}></span>
-      ))}
-    </>
-  );
+  const makeVisibleText = (words, section) => {
+    return (
+      <>
+        {words.map((word, i) => (
+          <div key={word} className='visibleTextContainer'>
+            <span
+              dangerouslySetInnerHTML={{ __html: word }}
+              className='textFill'
+              style={{ opacity: textFillOpacity(section) }}
+            ></span>
+            <span
+              dangerouslySetInnerHTML={{ __html: word }}
+              className='textOutline'
+              style={{ opacity: 1 - textFillOpacity(section) }}
+            ></span>
+          </div>
+        ))}
+      </>
+    );
+  };
 
   const makeAnimatedText = wordIndices => {
     const wordMatrix = [['I '], ['AM ', 'WILL '], ['blank', 'A ', 'blank']];
@@ -181,7 +193,7 @@ const Intro = ({ ratio, scrollbarWidth }) => {
         <h1 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM '])}
           <div className='marker' ref={meText} />
-          {makeVisibleText(['BRADEN ', 'WALKER.'])}
+          {makeVisibleText(['BRADEN ', 'WALKER.'], 'meSection')}
         </h1>
       </div>
       <div
@@ -192,7 +204,10 @@ const Intro = ({ ratio, scrollbarWidth }) => {
         <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM ', 'A '])}
           <div className='marker' ref={roleText} />
-          {makeVisibleText(['FULL ', 'STACK ', 'DEVE&shy;LOPER.'])}
+          {makeVisibleText(
+            ['FULL ', 'STACK ', 'DEVE&shy;LOPER.'],
+            'roleSection'
+          )}
         </h2>
       </div>
       <div
@@ -203,7 +218,7 @@ const Intro = ({ ratio, scrollbarWidth }) => {
         <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'AM '])}
           <div className='marker' ref={adjectiveText} />
-          {makeVisibleText(['CREA&shy;TIVE.'])}
+          {makeVisibleText(['CREA&shy;TIVE.'], 'adjectiveSection')}
         </h2>
       </div>
       <div
@@ -214,7 +229,7 @@ const Intro = ({ ratio, scrollbarWidth }) => {
         <h2 className='introText' style={introTextStyle}>
           {makeInvisibleText(['I ', 'WILL '])}
           <div className='marker' ref={realText} />
-          {makeVisibleText(['WORK ', 'FOR ', 'YOU.'])}
+          {makeVisibleText(['WORK ', 'FOR ', 'YOU.'], 'realSection')}
         </h2>
       </div>
 

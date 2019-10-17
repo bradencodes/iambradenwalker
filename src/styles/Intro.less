@@ -3,7 +3,6 @@
     width: 100%;
     // height: 100vh;
     padding-top: 20vh;
-    transition: opacity 0.2s;
   }
 
   .introText {
@@ -14,6 +13,28 @@
     flex-wrap: wrap;
     justify-content: flex-end;
     font-weight: 900;
+
+    .visibleTextContainer {
+      position: relative;
+
+      .textFill {
+        color: @primary;
+        transition: opacity 0.2s;
+      }
+
+      .textOutline {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        transition: opacity 0.2s;
+
+        -webkit-text-stroke: 2px @primary;
+        color: transparent;
+      }
+    }
 
     .animatedTextContainer {
       display: flex;
