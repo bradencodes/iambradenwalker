@@ -20,6 +20,8 @@ function App() {
     )
   );
 
+  const [isStuck, setIsStuck] = useState(false);
+
   useEffect(() => {
     const updateRatio = () => {
       setRatio(
@@ -30,26 +32,35 @@ function App() {
       );
     };
 
+    let lastKnownScroll = 0;
+
+    const handleWheel = () => {
+      if (lastKnownScroll === window.scrollY) setIsStuck(true);
+      else if (isStuck) setIsStuck(false);
+      lastKnownScroll = window.scrollY;
+    };
+
     window.addEventListener('resize', updateRatio);
+    window.addEventListener('wheel', handleWheel);
     return () => {
       window.removeEventListener('resize', updateRatio);
+      window.removeEventListener('wheel', handleWheel);
     };
-  }, [Ratio]);
+  }, [Ratio, isStuck]);
 
   return (
     <div className='App'>
       <div
         className={`content ${ratio.isWide ? 'sideContent' : 'bottomContent'}`}
       >
-        <Intro ratio={ratio} />
+        <Intro ratio={ratio} isStuck={isStuck} />
         <div style={{ width: '100%', height: '300vh' }}></div>
       </div>
       <Nav ratio={ratio} />
       <div
         id='frame'
         style={{
-          borderWidth: `${1 + 0.5 / ratio.value}vw`,
-          width: '100%'
+          borderWidth: `${1 + 0.5 / ratio.value}vw`
         }}
       />
     </div>

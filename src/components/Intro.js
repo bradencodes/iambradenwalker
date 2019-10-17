@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import 'intersection-observer';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 
-const Intro = ({ ratio, scrollbarWidth }) => {
+const Intro = ({ ratio, isStuck }) => {
   //Intersection observers
   const [meText, meTextInView] = useInView({
     threshhold: 1
@@ -183,7 +183,7 @@ const Intro = ({ ratio, scrollbarWidth }) => {
     <div id='introContainer'>
       <div
         id='meSection'
-        className={`snapSection ${allInView ? 'snap' : ''}`}
+        className={`snapSection ${allInView && !isStuck ? 'snap' : ''}`}
         style={snapSectionStyle('meSection')}
       >
         <h1 className='introText' style={introTextStyle}>
@@ -194,7 +194,7 @@ const Intro = ({ ratio, scrollbarWidth }) => {
       </div>
       <div
         id='roleSection'
-        className={`snapSection ${allInView ? 'snap' : ''}`}
+        className={`snapSection ${allInView && !isStuck ? 'snap' : ''}`}
         style={snapSectionStyle('roleSection')}
       >
         <h2 className='introText' style={introTextStyle}>
@@ -208,7 +208,7 @@ const Intro = ({ ratio, scrollbarWidth }) => {
       </div>
       <div
         id='adjectiveSection'
-        className={`snapSection ${allInView ? 'snap' : ''}`}
+        className={`snapSection ${allInView && !isStuck ? 'snap' : ''}`}
         style={snapSectionStyle('adjectiveSection')}
       >
         <h2 className='introText' style={introTextStyle}>
@@ -219,7 +219,7 @@ const Intro = ({ ratio, scrollbarWidth }) => {
       </div>
       <div
         id='realSection'
-        className={`snapSection ${allInView ? 'snap' : ''}`}
+        className={`snapSection ${allInView && !isStuck ? 'snap' : ''}`}
         style={snapSectionStyle('realSection')}
       >
         <h2 className='introText' style={introTextStyle}>
