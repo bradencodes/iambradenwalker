@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './styles/main.css';
 
 import Intro from './components/Intro';
@@ -22,6 +22,8 @@ function App() {
 
   const [isStuck, setIsStuck] = useState(false);
 
+  const lastKnownScroll = useRef(0);
+
   useEffect(() => {
     const updateRatio = () => {
       setRatio(
@@ -32,12 +34,46 @@ function App() {
       );
     };
 
-    let lastKnownScroll = 0;
+    const isChromium = window.chrome;
+    const winNav = window.navigator;
+    const vendorName = winNav.vendor;
+    const isOpera = typeof window.opr !== 'undefined';
+    const isIEedge = winNav.userAgent.indexOf('Edge') > -1;
+    const isIOSChrome = winNav.userAgent.match('CriOS');
 
     const handleWheel = () => {
-      if (lastKnownScroll === window.scrollY) setIsStuck(true);
-      else if (isStuck) setIsStuck(false);
-      lastKnownScroll = window.scrollY;
+      if (
+        isIOSChrome ||
+        (isChromium !== null &&
+          typeof isChromium !== 'undefined' &&
+          vendorName === 'Google Inc.' &&
+          isOpera === false &&
+          isIEedge === false)
+      ) {
+        if (lastKnownScroll.current === window.scrollY) {
+          setIsStuck(true);
+          document.body.setAttribute(
+            'style',
+            'scroll-snap-type: none !important;'
+          );
+          document
+            .getElementsByTagName('html')[0]
+            .setAttribute('style', 'scroll-snap-type: none !important;');
+        } else if (isStuck) {
+          setIsStuck(false);
+          document.body.setAttribute(
+            'style',
+            'scroll-snap-type: y mandatory !important;'
+          );
+          document
+            .getElementsByTagName('html')[0]
+            .setAttribute('style', 'scroll-snap-type: y mandatory !important;');
+        }
+        lastKnownScroll.current = window.scrollY;
+        if (isStuck) {
+          console.log('isStuck');
+        }
+      }
     };
 
     window.addEventListener('resize', updateRatio);

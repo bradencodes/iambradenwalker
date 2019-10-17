@@ -183,7 +183,7 @@ const Intro = ({ ratio, isStuck }) => {
     <div id='introContainer'>
       <div
         id='meSection'
-        className={`snapSection ${allInView && !isStuck ? 'snap' : ''}`}
+        className={`snapSection${allInView && !isStuck ? ' snap' : ''}`}
         style={snapSectionStyle('meSection')}
       >
         <h1 className='introText' style={introTextStyle}>
@@ -194,7 +194,7 @@ const Intro = ({ ratio, isStuck }) => {
       </div>
       <div
         id='roleSection'
-        className={`snapSection ${allInView && !isStuck ? 'snap' : ''}`}
+        className={`snapSection${allInView && !isStuck ? ' snap' : ''}`}
         style={snapSectionStyle('roleSection')}
       >
         <h2 className='introText' style={introTextStyle}>
@@ -208,7 +208,7 @@ const Intro = ({ ratio, isStuck }) => {
       </div>
       <div
         id='adjectiveSection'
-        className={`snapSection ${allInView && !isStuck ? 'snap' : ''}`}
+        className={`snapSection${allInView && !isStuck ? ' snap' : ''}`}
         style={snapSectionStyle('adjectiveSection')}
       >
         <h2 className='introText' style={introTextStyle}>
@@ -219,7 +219,7 @@ const Intro = ({ ratio, isStuck }) => {
       </div>
       <div
         id='realSection'
-        className={`snapSection ${allInView && !isStuck ? 'snap' : ''}`}
+        className={`snapSection${allInView && !isStuck ? ' snap' : ''}`}
         style={snapSectionStyle('realSection')}
       >
         <h2 className='introText' style={introTextStyle}>
