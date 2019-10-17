@@ -42,45 +42,42 @@ function App() {
     const isIOSChrome = winNav.userAgent.match('CriOS');
 
     const handleWheel = () => {
-      // if (
-      //   isIOSChrome ||
-      //   (isChromium !== null &&
-      //     typeof isChromium !== 'undefined' &&
-      //     vendorName === 'Google Inc.' &&
-      //     isOpera === false &&
-      //     isIEedge === false)
-      // ) {
-      //   if (lastKnownScroll.current === window.scrollY) {
-      //     setIsStuck(true);
-      //     document.body.setAttribute(
-      //       'style',
-      //       'scroll-snap-type: none !important;'
-      //     );
-      //     document
-      //       .getElementsByTagName('html')[0]
-      //       .setAttribute('style', 'scroll-snap-type: none !important;');
-      //   } else if (isStuck) {
-      //     setIsStuck(false);
-      //     document.body.setAttribute(
-      //       'style',
-      //       'scroll-snap-type: y mandatory !important;'
-      //     );
-      //     document
-      //       .getElementsByTagName('html')[0]
-      //       .setAttribute('style', 'scroll-snap-type: y mandatory !important;');
-      //   }
-      //   lastKnownScroll.current = window.scrollY;
-      //   if (isStuck) {
-      //     console.log('isStuck');
-      //   }
-      // }
+      if (
+        isIOSChrome ||
+        (isChromium !== null &&
+          typeof isChromium !== 'undefined' &&
+          vendorName === 'Google Inc.' &&
+          isOpera === false &&
+          isIEedge === false)
+      ) {
+        if (lastKnownScroll.current === window.scrollY) {
+          setIsStuck(true);
+          document.body.setAttribute(
+            'style',
+            'scroll-snap-type: none !important;'
+          );
+          document
+            .getElementsByTagName('html')[0]
+            .setAttribute('style', 'scroll-snap-type: none !important;');
+        } else if (isStuck) {
+          setIsStuck(false);
+          document.body.setAttribute(
+            'style',
+            'scroll-snap-type: y mandatory !important;'
+          );
+          document
+            .getElementsByTagName('html')[0]
+            .setAttribute('style', 'scroll-snap-type: y mandatory !important;');
+        }
+        lastKnownScroll.current = window.scrollY;
+      }
     };
 
     window.addEventListener('resize', updateRatio);
-    // window.addEventListener('wheel', handleWheel);
+    window.addEventListener('wheel', handleWheel);
     return () => {
       window.removeEventListener('resize', updateRatio);
-      // window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('wheel', handleWheel);
     };
   }, [Ratio, isStuck]);
 
