@@ -2,11 +2,13 @@
   box-sizing: border-box;
   outline: none;
 }
+body {
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+}
 html {
   font-size: 62.5%;
   background: #ffffff;
-}
-#root {
   height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;

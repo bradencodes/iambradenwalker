@@ -26,14 +26,12 @@ const Intro = ({ ratio, scrollbarWidth }) => {
         const sectionHeight = document.getElementById(section).clientHeight;
         const pageHeight = document.documentElement.clientHeight;
         const difference = pageHeight - sectionHeight;
-        if (difference > 0) {
+        if (difference > pageHeight * 0.2) {
           return `calc(${difference}px - 20vh - (${8 +
             4 / ratio.value}vw / 2.1))`;
         } else return 0;
       }
     };
-
-    return;
 
     return {
       marginBottom: handleMarginBottom()
@@ -57,9 +55,7 @@ const Intro = ({ ratio, scrollbarWidth }) => {
 
   const overlaySectionStyle = {
     // width: ratio.isWide ? '80vw' : '100%',
-    padding: ratio.isWide
-      ? `20vh calc(5vw + ${scrollbarWidth}px) 0 20vw`
-      : `20vh calc(5vw + ${scrollbarWidth}px) 0 5vw`
+    padding: ratio.isWide ? `20vh 5vw 0 20vw` : `20vh 5vw 0 5vw`
   };
 
   const makeInvisibleText = words => (
